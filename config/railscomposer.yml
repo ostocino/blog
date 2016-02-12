@@ -1,0 +1,31 @@
+# This application was generated with Rails Composer
+
+development:
+  apps4: rails-signup-download
+  announcements: mailinglist
+  dev_webserver: puma
+  prod_webserver: puma
+  database: sqlite
+  templates: erb
+  tests: rspec
+  continuous_testing: none
+  frontend: bootstrap3
+  email: gmail
+  authentication: devise
+  devise_modules: false
+  omniauth_provider: 
+  authorization: roles
+  form_builder: false
+  pages: about+users
+  layouts: blog_home
+  locale: none
+  analytics: 
+  deployment: 
+  ban_spiders: 
+  github: 
+  local_env_file: false
+  quiet_assets: true
+  better_errors: true
+  pry: false
+  rvmrc: 
+  dashboard: none
