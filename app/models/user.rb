@@ -1,7 +1,8 @@
 class User < ActiveRecord::Base
   enum role: [:user, :vip, :admin]
   after_initialize :set_default_role, :if => :new_record?
-  after_create :sign_up_for_mailing_list
+  #Fix this sign_up_for_mailing_list accesing mailchimp Gibbon API
+  #after_create :sign_up_for_mailing_list
 
   def set_default_role
     self.role ||= :user

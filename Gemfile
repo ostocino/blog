@@ -6,6 +6,10 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
+gem 'therubyracer'
+gem 'jquery-ui-rails'
+gem 'less-rails-bootstrap'
+gem 'designmodo-flatuipro-rails', '~>1.3.0.branch'
 group :development, :test do
   gem 'byebug'
 end
