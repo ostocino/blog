@@ -18,9 +18,15 @@
     </div>
       <%= f.submit 'Sign in', :class => 'button right' %>
       <% if devise_mapping.rememberable? -%>
+        <label class="checkbox" for="checkbox1">
+          <input type="checkbox" value="" id="checkbox1" data-toggle="checkbox">
+          Remember me
+        </label>
+
         <div class="checkbox" style="width:150px">
-          <label>
-            <%= f.check_box :remember_me %> Remember me
+
+          <label class="checkbox" for="checkboxRemeberme">
+            <%= f.check_box :remember_me%> Remember me
           </label>
         </div>
       <% end -%>

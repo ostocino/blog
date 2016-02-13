@@ -32,6 +32,15 @@ module RailsApp
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
 
+    #Enable Assets Extension 
+    config.assets.enabled = true
+
+    # Extending Asset Pipeline
+    config.assets.paths << Rails.root.join("vendor", "assets", "javascripts")
+    config.assets.paths << Rails.root.join("vendor", "assets", "stylesheets")
+    config.assets.paths << Rails.root.join("vendor", "assets", "less")
+    config.assets.paths << Rails.root.join("vendor", "assets", "images")
+
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
   end
