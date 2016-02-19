@@ -36,6 +36,7 @@ module RailsApp
     config.assets.enabled = true
 
     # Extending Asset Pipeline
+    config.assets.paths << Rails.root.join("app", "assets", "images")
     config.assets.paths << Rails.root.join("vendor", "assets", "javascripts")
     config.assets.paths << Rails.root.join("vendor", "assets", "stylesheets")
     config.assets.paths << Rails.root.join("vendor", "assets", "less")

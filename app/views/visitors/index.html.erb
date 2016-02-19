@@ -8,66 +8,35 @@
 
             <h1 class="page-header">
                 oscarchavez
-                <small>full stack dev, vr enthusiast, entrepreneur</small>
+            <p>full stack dev, vr enthusiast, entrepreneur</p>
             </h1>
 
             <!-- First Blog Post -->
             <h2>
-                <%= link_to 'Blog Post Title', page_path('blogpost') %>
+                <%= link_to 'Hello World', page_path('blogpost') %>
             </h2>
             <p class="lead">
-                by <%= link_to 'Start Bootstrap', root_path %>
+                by <%= link_to 'ostocino', root_path %>
             </p>
-            <p><span class="glyphicon glyphicon-time"></span> Posted on August 28, 2013 at 10:00 PM</p>
+            <p><span class="glyphicon glyphicon-time"></span> Posted on Feb 19, 2016</p>
             <hr>
-            <img class="img-responsive" src="http://placehold.it/900x300" alt="">
+            <%= image_tag "1.png", :class => "img-responsive"%>
             <hr>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, veritatis, tempora, necessitatibus inventore nisi quam quia repellat ut tempore laborum possimus eum dicta id animi corrupti debitis ipsum officiis rerum.</p>
-            <%= link_to ('Read More <span class="glyphicon glyphicon-chevron-right"></span>').html_safe, page_path('blogpost'), :class => "btn btn-primary" %>
-
-            <hr>
-
-            <!-- Second Blog Post -->
-            <h2>
-                <%= link_to 'Blog Post Title', page_path('blogpost') %>
-            </h2>
-            <p class="lead">
-                by <%= link_to 'Start Bootstrap', root_path %>
-            </p>
-            <p><span class="glyphicon glyphicon-time"></span> Posted on August 28, 2013 at 10:45 PM</p>
-            <hr>
-            <img class="img-responsive" src="http://placehold.it/900x300" alt="">
-            <hr>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam, quasi, fugiat, asperiores harum voluptatum tenetur a possimus nesciunt quod accusamus saepe tempora ipsam distinctio minima dolorum perferendis labore impedit voluptates!</p>
-            <%= link_to ('Read More <span class="glyphicon glyphicon-chevron-right"></span>').html_safe, page_path('blogpost'), :class => "btn btn-primary" %>
-
-            <hr>
-
-            <!-- Third Blog Post -->
-            <h2>
-                <%= link_to 'Blog Post Title', page_path('blogpost') %>
-            </h2>
-            <p class="lead">
-                by <%= link_to 'Start Bootstrap', root_path %>
-            </p>
-            <p><span class="glyphicon glyphicon-time"></span> Posted on August 28, 2013 at 10:45 PM</p>
-            <hr>
-            <img class="img-responsive" src="http://placehold.it/900x300" alt="">
-            <hr>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate, voluptates, voluptas dolore ipsam cumque quam veniam accusantium laudantium adipisci architecto itaque dicta aperiam maiores provident id incidunt autem. Magni, ratione.</p>
-            <%= link_to ('Read More <span class="glyphicon glyphicon-chevron-right"></span>').html_safe, page_path('blogpost'), :class => "btn btn-primary" %>
+            <p>First of many posts! Until I fix or create the posts view/controller and add Angular to it, this "sticky" post will remain as a placeholder.</p>
+            <%= link_to ('Contact me <span class="glyphicon glyphicon-chevron-right"></span>').html_safe, 'http://twitter.com/ostocino', :class => "btn btn-primary"%>
+            <!--%= link_to ('Read More <span class="glyphicon glyphicon-chevron-right"></span>').html_safe, page_path('blogpost'), :class => "btn btn-primary" %-->
 
             <hr>
 
             <!-- Pager -->
-            <ul class="pager">
+            <!--ul class="pager">
                 <li class="previous">
                     <a href="#">&larr; Older</a>
                 </li>
                 <li class="next">
                     <a href="#">Newer &rarr;</a>
                 </li>
-            </ul>
+            </ul-->
 
         </div>
 
@@ -76,7 +45,7 @@
 
             <!-- Blog Search Well -->
             <div class="well">
-                <h4>Blog Search</h4>
+                <h4>Search</h4>
                 <div class="input-group">
                     <input type="text" class="form-control">
                     <span class="input-group-btn">
@@ -90,30 +59,17 @@
 
             <!-- Blog Categories Well -->
             <div class="well">
-                <h4>Blog Categories</h4>
+                <h4>Categories</h4>
                 <div class="row">
                     <div class="col-lg-6">
                         <ul class="list-unstyled">
-                            <li><a href="#">Category Name</a>
+                            <li><a href="#">development</a>
                             </li>
-                            <li><a href="#">Category Name</a>
+                            <li><a href="#">vr</a>
                             </li>
-                            <li><a href="#">Category Name</a>
+                            <li><a href="#">graphics</a>
                             </li>
-                            <li><a href="#">Category Name</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <!-- /.col-lg-6 -->
-                    <div class="col-lg-6">
-                        <ul class="list-unstyled">
-                            <li><a href="#">Category Name</a>
-                            </li>
-                            <li><a href="#">Category Name</a>
-                            </li>
-                            <li><a href="#">Category Name</a>
-                            </li>
-                            <li><a href="#">Category Name</a>
+                            <li><a href="#">other</a>
                             </li>
                         </ul>
                     </div>
@@ -124,8 +80,10 @@
 
             <!-- Side Widget Well -->
             <div class="well">
-                <h4>Side Widget Well</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, perspiciatis adipisci accusamus laudantium odit aliquam repellat tempore quos aspernatur vero.</p>
+                <h4><%= link_to('@ostocino','http://twitter.com/ostocino')%></h4>
+                <a class="twitter-timeline" href="https://twitter.com/ostocino" data-widget-id="694431438804901888">Tweets de ostocino</a>
+                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+                </script>
             </div>
 
         </div>

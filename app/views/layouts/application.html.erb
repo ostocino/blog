@@ -3,10 +3,11 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= content_for?(:title) ? yield(:title) : "oscarchavez.me" %></title>
-    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "personal blog of a fullstack developer, vr enthusiast, and an entrepreneur" %>">
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "personal blog: fullstack development, vr/ar, entrepreneurship, geek stuff, @mexico city. Built on Ruby on Rails + Angular, deployed on Heroku" %>">
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
     <%= csrf_meta_tags %>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
   </head>
   <body>
     <header>
