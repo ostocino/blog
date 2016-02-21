@@ -10,6 +10,8 @@ gem 'therubyracer'
 gem 'jquery-ui-rails'
 gem 'less-rails-bootstrap'
 gem 'designmodo-flatuipro-rails', '~>1.3.0.branch'
+gem 'angular-rails-templates'
+gem 'sprockets', '2.12.3'
 group :development, :test do
   gem 'byebug'
 end
