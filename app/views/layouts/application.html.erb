@@ -9,13 +9,8 @@
     <%= csrf_meta_tags %>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
   </head>
-  <body>
-    <header>
-      <%= render 'layouts/navigation' %>
-    </header>
-    <main role="main">
-       <%= render 'layouts/messages' %>
-       <%= yield %>
-    </main>
+  <body ng-app="oscarchavezBlog">
+    <div ng-include="'nav/_navMain.html'"></div>
+    <ui-view></ui-view>
   </body>
 </html>

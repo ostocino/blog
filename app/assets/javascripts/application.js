@@ -20,4 +20,7 @@
 //= require flatuipro
 //= require jquery_ujs
 //= require bootstrap-sprockets
+//= require angular
+//= require angular-ui-router
+//= require angular-rails-templates
 //= require_tree .
