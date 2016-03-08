@@ -5,6 +5,7 @@ angular.module('flapperNews').controller('PostsCtrl', [
 'post',
 function($scope, posts, post){
 	$scope.post = post;
+	console.log("post", $scope.post);
 
 	$scope.addComment = function(){
 	  if($scope.body === '') { return; }

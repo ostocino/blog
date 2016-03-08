@@ -7,6 +7,7 @@ gem 'rails', '4.2.0'
 gem 'sqlite3'
 # Use SCSS for stylesheets
 gem 'angular-rails-templates'
+gem 'sprockets', '2.12.3'
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -39,3 +40,8 @@ group :development, :test do
   gem 'spring'
 end
 
+gem 'jquery-ui-rails'
+gem 'less-rails-bootstrap' 
+gem 'designmodo-flatuipro-rails', '~> 1.3.2.0.branch'
+gem 'therubyracer'
+gem 'pg'

@@ -21,6 +21,7 @@ function($stateProvider, $urlRouterProvider) {
 		  controller: 'PostsCtrl',
       resolve: {
         post: ['$stateParams', 'posts', function($stateParams, posts) {
+          console.log(posts);
           return posts.get($stateParams.id);
         }]
       }      
