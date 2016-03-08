@@ -17,5 +17,6 @@
 /tmp
 
 
-# Vendor Assets
+# Vendor & Publi Assets
 vendor/assets
+public/assets
