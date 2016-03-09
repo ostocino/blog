@@ -26,8 +26,11 @@ module FlapperNews
         config.assets.paths << bower_path
     end
 
+    #Join Fonts path to Asset Pipeline
+    Rails.root.join('vendor','assets','fonts')
+
     #Precompile Bower Bootstrap Fonts
-    config.assets.precompile << %r(bootstrap-sass/assets/fonts/bootstrap/[\w-]+\.(?:eot|svg|ttf|woff2?)$)
+    config.assets.precompile += %w( .svg .eot .woff2 .ttf)
     
     # Minimum Sass number precision required by bootstrap-sass
     ::Sass::Script::Number.precision = [8, ::Sass::Script::Number.precision].max
