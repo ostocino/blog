@@ -44,3 +44,5 @@ gem 'designmodo-flatuipro-rails', '~> 1.3.2.0.branch'
 gem 'therubyracer'
 gem 'pg'
 
+gem 'rails_12factor'
+
