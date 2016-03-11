@@ -31,6 +31,12 @@ module FlapperNews
 
     #Precompile Bower Bootstrap Fonts
     config.assets.precompile += %w( .svg .eot .woff2 .ttf)
+    config.assets.precompile += [
+        'vendor/assets/fonts/glyphicons-halflings-regular.ttf',
+        'vendor/assets/fonts/glyphicons-halflings-regular.woff2',
+        'vendor/assets/fonts/glyphicons-halflings-regular.woff',
+        'vendor/assets/fonts/glyphicons-halflings-regular.eot'
+    ]
     
     # Minimum Sass number precision required by bootstrap-sass
     ::Sass::Script::Number.precision = [8, ::Sass::Script::Number.precision].max
