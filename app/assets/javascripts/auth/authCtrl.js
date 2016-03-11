@@ -1,4 +1,4 @@
-angular.module('flapperNews')
+angular.module('oscarchavezBlog')
 .controller('AuthCtrl', [
 '$scope',
 '$state',

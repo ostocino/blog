@@ -17,8 +17,9 @@
                   <li><a href="#/home">Home</a></li>
                   <li ng-hide="signedIn()"><a href="#/login">Log In</a></li>
                   <li ng-hide="signedIn()"><a href="#/register">Register</a></li>
-                  <li ng-show="signedIn()"><a href="#/">{{ user.username }}</a></li>
+                  <li ng-show="signedIn()"><a href="#/">{{user.username }}</a></li>
                   <li ng-show="signedIn()"><a ng-click="logout()">Log Out</a></li>
+                  <li ng-show="user.username == 'ostocino'"><a class="btn btn-primary" href="#/new">New Post</a></li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->

@@ -1,4 +1,4 @@
-angular.module('flapperNews')
+angular.module('oscarchavezBlog')
 .controller('NavCtrl', [
 '$scope',
 'Auth',

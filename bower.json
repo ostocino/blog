@@ -1,9 +1,9 @@
 {
-  "name": "flapper-news",
+  "name": "oscarchavez-blog",
   "version": "0.0.0",
-  "homepage": "https://github.com/jessefurmanek/flapper-news",
+  "homepage": "https://github.com/ostocino/blog",
   "authors": [
-    "jessefurmanek <jesse.furmanek@gmail.com>"
+    "ostocino <joscarchavezromer@gmail.com>"
   ],
   "license": "MIT",
   "ignore": [

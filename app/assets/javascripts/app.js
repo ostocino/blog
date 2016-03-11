@@ -1,4 +1,4 @@
-angular.module('flapperNews', ['ui.router', 'templates', 'Devise']).config([
+angular.module('oscarchavezBlog', ['ui.router', 'templates', 'Devise']).config([
 '$stateProvider',
 '$urlRouterProvider',
 function($stateProvider, $urlRouterProvider) {
@@ -12,8 +12,9 @@ function($stateProvider, $urlRouterProvider) {
         postPromise: ['posts', 
           function(posts){
             return posts.getAll();
-          }]
-		  }})
+        }]
+		  }
+    })
 
 		.state('posts', {
 		  url: '/posts/{id}',
@@ -25,6 +26,17 @@ function($stateProvider, $urlRouterProvider) {
           return posts.get($stateParams.id);
         }]
       }      
+    })
+    .state('new', {
+      url: '/new',
+      templateUrl: 'posts/_new.html',
+      controller: 'MainCtrl',
+      resolve: {
+        postPromise: ['posts', 
+          function(posts){
+            return posts.getAll();
+        }]
+      }
     })
 
     .state('login', {

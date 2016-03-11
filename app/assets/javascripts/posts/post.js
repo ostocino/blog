@@ -1,8 +1,10 @@
-angular.module('flapperNews').factory('posts', ['$http', function($http){
+angular.module('oscarchavezBlog').factory('posts', ['$http', function($http){
   var o = {
     posts: [  
     ]
   };
+
+  //Posts CRUD
 
   o.getAll = function() {
   		return $http.get('/posts.json').success(function(data){
@@ -28,6 +30,16 @@ angular.module('flapperNews').factory('posts', ['$http', function($http){
 	    return res.data;
 	  });
 	}; 
+
+  o.destroy = function(post){
+    return $http.delete('/posts/' + post.id).success(function(data){
+      console.log("msg: ", data);
+      //o.posts.splice(data, post);
+    }).error(function(){
+    });
+  }; 
+
+  //Comments CRUD
 
 	o.addComment = function(id, comment) {
 	  return $http.post('/posts/' + id + '/comments.json', comment);

@@ -1,5 +1,5 @@
 
-angular.module('flapperNews').controller('PostsCtrl', [
+angular.module('oscarchavezBlog').controller('PostsCtrl', [
 '$scope',
 'posts',
 'post',
