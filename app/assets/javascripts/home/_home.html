@@ -20,10 +20,11 @@
           <hr>
           <img class="img-responsive" src="http://placehold.it/900x300" alt="">
           <hr>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, veritatis, tempora, necessitatibus inventore nisi quam quia repellat ut tempore laborum possimus eum dicta id animi corrupti debitis ipsum officiis rerum.</p>
+          <p>{{post.body | limitTo: 200}}.</p>
           <a class="btn btn-primary" href="{{post.link}}">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
           <a class="btn btn-info" ng-click="incrementUpvotes(post)"><span class="glyphicon glyphicon-thumbs-up"></span>  Like</a>
-          <a class="btn btn-danger" ng-click="deletePost(post)">Delete Post</a>
+          <a ng-show="post.user.username == 'ostocino'" class="btn btn-warning" href="#/edit">Edit Post</a>
+          <a ng-show="post.user.username == 'ostocino'" class="btn btn-danger" ng-click="deletePost(post)">Delete Post</a>
 
           <hr>
         </div>

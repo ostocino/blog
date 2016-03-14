@@ -20,15 +20,17 @@ class PostsController < ApplicationController
     respond_with @post
   end
 
+  def edit
+  end
+
   def destroy
-     Post.destroy(params[:id])
-     #respond_with Post.all
-     puts "Post Destroyed"
-     render plain: "Post Destroyed"
+     Post.find(params[:id]).destroy
+     #puts Post.find(params[:id])
+     respond_with Post.all
   end
 
   private	
   def post_params
-    params.require(:post).permit(:link, :title)
+    params.require(:post).permit(:link, :title, :body, :category)
   end	
 end

@@ -39,6 +39,12 @@ function($stateProvider, $urlRouterProvider) {
       }
     })
 
+    .state('edit', {
+        url: '/edit',
+        templateUrl: 'posts/_edit.html',
+        controller: 'MainCtrl'
+      })
+
     .state('login', {
       url: '/login',
       templateUrl: 'auth/_login.html',

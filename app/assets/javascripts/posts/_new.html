@@ -1,19 +1,72 @@
 <div class="home">
-   <form ng-submit="addPost()"
-    style="margin-top:30px;">
-    <h3>Add a new post</h3>
+  <form ng-submit="addPost()">
+    <h3>Añadir nuevo Post</h3>
     <div class="form-group">
-      <input type="text"
-      class="form-control"
-      placeholder="Title"
-      ng-model="title"></input>
+      <label>Titulo</label>
+      <input 
+        type="text" 
+        class="form-control" 
+        name="title" 
+        placeholder="Titulo" 
+        ng-model="title"></input>
     </div>
     <div class="form-group">
-      <input type="text"
-      class="form-control"
-      placeholder="Link"
-      ng-model="link"></input>
+      <div class="row">
+        <div class="col-xs-6">
+          <label>Categoria</label>
+          <select class="form-control select select-primary select-block mbl" name="category" ng-model="category">
+            <option value="">Escoge una categoría</option>
+            <option value="development">Desarrollo</option>
+            <option value="vr-ar">VR/AR</option>
+            <option value="mxvr">MXVR</option>
+            <option value="blog">Blog</option>
+          </select>
+        </div>
+        <div class="col-xs-6">
+          <label>Imagen Principal</label>
+          <div class="form-group">
+            <div class="fileinput fileinput-new" data-provides="fileinput">
+              <div class="input-group">
+                <div class="form-control uneditable-input" data-trigger="fileinput">
+                  <span class="fui-clip fileinput-exists"></span>
+                  <span class="fileinput-filename"></span>
+                </div>
+                <span class="input-group-btn btn-file">
+                  <span class="btn btn-default fileinput-new" data-role="select-file">Select file</span>
+                  <span class="btn btn-default fileinput-exists" data-role="change"><span class="fui-gear"></span>&nbsp;&nbsp;Change</span>
+                  <input type="file" name="...">
+                  <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput"><span class="fui-trash"></span>&nbsp;&nbsp;Remove</a>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <button type="submit" class="btn btn-primary">Post</button>
+    <div class="form-group">
+      <label>Link (Si en blanco, link al post)</label>
+      <input 
+        type="text" 
+        class="form-control" 
+        name="link" 
+        placeholder="Link" 
+        ng-model="link"></input>
+    </div>
+    <div class="form-group">
+      <label>Post</label>
+      <textarea  
+        class="form-control" 
+        name="body"
+        rows="10" 
+        placeholder="Mensaje" 
+        ng-model="body"></textarea>
+    </div>
+    <button type="submit" class="btn btn-hg btn-primary pull-right">Post</button>
   </form>
 </div>
+
+<script>
+  $(document).ready(function(){
+  $('.select').select2();        
+});
+</script>
