@@ -1,6 +1,6 @@
 angular.module('oscarchavezBlog').factory('posts', ['$http', function($http){
   var o = {
-    posts: [  
+    posts: [
     ]
   };
 
@@ -16,7 +16,6 @@ angular.module('oscarchavezBlog').factory('posts', ['$http', function($http){
 
 	  return $http.post('/posts.json', post).success(function(data){
       o.posts.push(data);
-
       if(!data.link){
         data.link = '#/posts/' + data.id;
         //o.edit(data);
@@ -36,15 +35,15 @@ angular.module('oscarchavezBlog').factory('posts', ['$http', function($http){
 	    .success(function(data){
 	      post.upvotes += 1;
 	    });
-	}; 
-	
+	};
+
 	o.get = function(id) {
 	  return $http.get('/posts/' + id +'.json').then(function(res){
 	    console.log("POST GET", res.data);
       return res.data;
 
 	  });
-	}; 
+	};
 
   o.edit = function(post){
     return $http.post('/posts.json', post).success(function(data){
@@ -58,13 +57,13 @@ angular.module('oscarchavezBlog').factory('posts', ['$http', function($http){
       //o.posts.splice(data, post);
     }).error(function(){
     });
-  }; 
+  };
 
   //Comments CRUD
 
 	o.addComment = function(id, comment) {
 	  return $http.post('/posts/' + id + '/comments.json', comment);
-	};	
+	};
 
 	o.upvoteComment = function(post, comment) {
   return $http.put('/posts/' + post.id + '/comments/'+ comment.id + '/upvote.json')
@@ -72,6 +71,6 @@ angular.module('oscarchavezBlog').factory('posts', ['$http', function($http){
       comment.upvotes += 1;
     });
 	};
-	
+
   return o;
 }])

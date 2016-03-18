@@ -1,27 +1,30 @@
-<div class="page-header"> 
-  <h3>
-    <a ng-show="post.link" href="{{post.link}}">
-      {{post.title}}
-    </a>
-    <span ng-hide="post.link">
-      {{post.title}}
-    </span>
-    <h2>{{post.category}}</h2>
-    <p>{{post.body}}</p>
-  </h3>
+<div class="page-header">
+  <h2>
+    <a href="{{post.link}}">{{post.title}}</a>
+  </h2>
+  <p >
+    por <a href="#/users/{{post.user.username}}">{{post.user.username}}</a> | {{post.category}} | {{post.upvotes}} likes
+  </p>
+  <p><span class="glyphicon glyphicon-time"></span> Posteado {{post.created_at | date: 'd/MMM,yyyy h:mm a'}}</p>
+  <hr>
+  <img class="img-responsive" src="http://placehold.it/900x300" alt="">
+  <hr>
+  <p>{{post.body}}</p>
+  <a class="btn btn-info" ng-click="incrementPostUpvotes(post)"><span class="glyphicon glyphicon-thumbs-up"></span> Like</a>
+  <a ng-show="post.user.username == 'ostocino'" class="btn btn-warning" href="#/edit/{{post.id}}">Editar Post</a>
+  <a ng-show="post.user.username == 'ostocino'" class="btn btn-danger" ng-click="deletePost(post)">Borrar Post</a>
 </div>
-
+<h2>Comentarios</h2>
 <div ng-repeat="comment in post.comments | orderBy:'-upvotes'">
-  <span class="glyphicon glyphicon-thumbs-up"
-    ng-click="incrementUpvotes(comment)"></span>
-  {{comment.upvotes}} - by {{comment.user.username}}
-  <span style="font-size:20px; margin-left:10px;">
-    {{comment.body}}
-  </span>
+
+  <button class="btn btn-info">{{comment.upvotes}}  <span class="glyphicon glyphicon-thumbs-up" ng-click="incrementUpvotes(comment)"></span></button>
+  <span style="font-size:24px;"><strong><a href="{{post.user.username}}"> {{comment.user.username}}</a>:</strong></span>
+  <span style="font-size:20px; margin-left:10px;">{{comment.body}}</span>
 </div>
+<br>
 <form ng-submit="addComment()"
   style="margin-top:30px;">
-  <h3>Add a new comment</h3>
+  <h3>Añade un Comentario</h3>
 
   <div class="form-group">
     <input type="text"
@@ -29,5 +32,5 @@
     placeholder="Comment"
     ng-model="body"></input>
   </div>
-  <button type="submit" class="btn btn-primary">Post</button>
+  <button type="submit" class="btn btn-primary">Enviar</button>
 </form>

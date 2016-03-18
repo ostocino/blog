@@ -1,91 +1,110 @@
 <div class="row">
 
-    <!-- Blog Entries Column -->
-    <div class="col-md-8">
+  <!-- Blog Entries Column -->
+  <div class="col-md-8">
 
-        <h1 class="page-header">
-            oscarchavez
-            <p class="text-lowercase" style="font-size:30px;"><small>fullstack, vr/ar dev, entrepreneur</small></p>
-        </h1>
-
-        <!-- Blog Post -->
-        <div ng-repeat="post in posts">
-          <h2>
-            <a href="{{post.link}}">{{post.title}}</a>
-          </h2>
-          <p class="lead">
-              por <a href="#/users/{{post.user.username}}">{{post.user.username}}</a> | {{post.upvotes}} likes
-          </p>
-          <p><span class="glyphicon glyphicon-time"></span> Posteado {{post.created_at | date: 'd/MMM,yyyy h:mm a'}}</p>
-          <hr>
-          <img class="img-responsive" src="http://placehold.it/900x300" alt="">
-          <hr>
-          <p>{{post.body | limitTo: 200}}.</p>
-          <a class="btn btn-primary" href="{{post.link}}">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
-          <a class="btn btn-info" ng-click="incrementUpvotes(post)"><span class="glyphicon glyphicon-thumbs-up"></span>  Like</a>
-          <a ng-show="post.user.username == 'ostocino'" class="btn btn-warning" href="#/edit">Edit Post</a>
-          <a ng-show="post.user.username == 'ostocino'" class="btn btn-danger" ng-click="deletePost(post)">Delete Post</a>
-
-          <hr>
-        </div>
-
-        <!-- Pager >
-        <ul class="pager">
-            <li class="previous">
-                <a href="#">&larr; Older</a>
-            </li>
-            <li class="next">
-                <a href="#">Newer &rarr;</a>
-            </li>
-        </ul-->
-
+    <h1 class="page-header">
+      oscarchavez
+      <p class="text-lowercase" style="font-size:30px;"><small>rails fullstack, vr/ar dev, entrepreneur</small></p>
+    </h1>
+    <div class="mbl pbm">
+      <ul class="nav nav-pills">
+        <li ng-class="{'active': dev}">
+          <a ng-click="dev = !dev">Desarrollo</a>
+        </li>
+        <li ng-class="{'active': vrar}">
+          <a ng-click="vrar = !vrar">VR/AR</a>
+        </li >
+        <li ng-class="{'active': blog}">
+          <a ng-click="blog = !blog">Blog</a>
+        </li>
+      </ul>
     </div>
 
-    <!-- Blog Sidebar Widgets Column -->
-    <div class="col-md-4">
-        <div class="sidebar">
-          <!-- Blog Search Well -->
-          <div class="well">
-              <h4>Buscar</h4>
-              <div class="input-group">
-                  <input type="text" class="form-control">
-                  <span class="input-group-btn">
-                      <button class="btn btn-default" type="button">
-                          <span class="glyphicon glyphicon-search"></span>
-                  </button>
-                  </span>
-              </div>
-              <!-- /.input-group -->
-          </div>
-          <!-- Blog Categories Well -->
-          <div class="well">
-              <h4>Categorias</h4>
-              <div class="row">
-                  <div class="col-lg-6">
-                      <ul class="list-unstyled">
-                          <li><a href="#">desarrollo</a>
-                          </li>
-                          <li><a href="#">vr/ar</a>
-                          </li>
-                          <li><a href="#">mxvr</a>
-                          </li>
-                          <li><a href="#">blog</a>
-                          </li>
-                      </ul>
-                  </div>
-                  <!-- /.col-lg-6 -->
-              </div>
-              <!-- /.row -->
-          </div>
+    <!-- Blog Post -->
+    <div ng-repeat="post in posts">
+      <h2>
+        <a href="{{post.link}}">{{post.title}}</a>
+      </h2>
+      <p >
+        por <a href="#/users/{{post.user.username}}">{{post.user.username}}</a> | {{post.category}} |{{post.upvotes}} likes
+      </p>
+      <p><span class="glyphicon glyphicon-time"></span> Posteado {{post.created_at | date: 'd/MMM,yyyy h:mm a'}}</p>
+      <hr>
+      <img class="img-responsive" src="http://placehold.it/900x300" alt="">
+      <hr>
+      <p>{{post.body | limitTo: 200}}.</p>
+      <a class="btn btn-primary" href="{{post.link}}">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
+      <a class="btn btn-info" ng-click="incrementUpvotes(post)"><span class="glyphicon glyphicon-thumbs-up"></span>  Like</a>
+      <a ng-show="post.user.username == 'ostocino'" class="btn btn-warning" href="#/edit/{{post.id}}">Editar Post</a>
+      <a ng-show="post.user.username == 'ostocino'" class="btn btn-danger" ng-click="deletePost(post)"><i class="glyphicon glyphicon-bin"></i>Borrar Post</a>
+      <hr>
+    </div>
 
-          <!-- Side Widget Well -->
-          <div class="well">
-            <h4>Tweets por <a href="http:///twitter.com/ostocino">mi</a></h4>
-            <a class="twitter-timeline" href="https://twitter.com/ostocino" data-widget-id="694431438804901888"> </a>
-            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+    <!-- Pager -->
+    <ul class="pager">
+      <li class="previous">
+        <a href="#">&larr; Older</a>
+      </li>
+      <li class="next">
+        <a href="#">Newer &rarr;</a>
+      </li>
+    </ul>
+
+  </div>
+
+  <!-- Blog Sidebar Widgets Column -->
+  <div class="col-md-4">
+    <div class="sidebar">
+      <!-- Blog Search Well -->
+      <div class="well">
+        <h4>Buscar</h4>
+        <div class="input-group">
+          <input type="text" class="form-control">
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="button">
+              <span class="glyphicon glyphicon-search"></span>
+            </button>
+          </span>
+        </div>
+        <!-- /.input-group -->
+      </div>
+
+      <div class="well">
+        <h4>Links</h4>
+        <div class="row">
+          <div class="col-lg-6">
+            <button type="button" href="http://vector3.co" class="btn btn-danger">Vector3</button>
+            <button type="button" href="http://mxvr.co" class="btn btn-success">MXVR</button>
           </div>
         </div>
+      </div>
+      <!-- Popular Posts Well -->
+      <div class="well">
+        <h4>Populares</h4>
+        <div class="row">
+          <div class="col-lg-6">
+            <div ng-repeat="post in posts | limitTo: 5">
+              <p>
+                <a href="{{post.link}}">{{post.title}} | {{post.upvotes}} likes</a>
+
+              </p>
+            </div>
+          </div>
+          <!-- /.col-lg-6 -->
+        </div>
+        <!-- /.row -->
+      </div>
+
+      <!-- Side Widget Well -->
+      <div class="well">
+        <h4><a href="http:///twitter.com/ostocino">@ostocino</a></h4>
+        <a class="twitter-timeline" href="https://twitter.com/ostocino" data-widget-id="694431438804901888"> </a>
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+      </div>
     </div>
+  </div>
 
 </div>
 <!-- /.row -->
+

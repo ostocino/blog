@@ -3,11 +3,11 @@
     <h3>Añadir nuevo Post</h3>
     <div class="form-group">
       <label>Titulo</label>
-      <input 
-        type="text" 
-        class="form-control" 
-        name="title" 
-        placeholder="Titulo" 
+      <input
+        type="text"
+        class="form-control"
+        name="title"
+        placeholder="Titulo"
         ng-model="title"></input>
     </div>
     <div class="form-group">
@@ -16,8 +16,8 @@
           <label>Categoria</label>
           <select class="form-control select select-primary select-block mbl" name="category" ng-model="category">
             <option value="">Escoge una categoría</option>
-            <option value="development">Desarrollo</option>
-            <option value="vr-ar">VR/AR</option>
+            <option value="desarrollos">Desarrollo</option>
+            <option value="vrar">VR/AR</option>
             <option value="mxvr">MXVR</option>
             <option value="blog">Blog</option>
           </select>
@@ -45,20 +45,20 @@
     </div>
     <div class="form-group">
       <label>Link (Si en blanco, link al post)</label>
-      <input 
-        type="text" 
-        class="form-control" 
-        name="link" 
-        placeholder="Link" 
+      <input
+        type="text"
+        class="form-control"
+        name="link"
+        placeholder="Link"
         ng-model="link"></input>
     </div>
     <div class="form-group">
       <label>Post</label>
-      <textarea  
-        class="form-control" 
+      <textarea
+        class="form-control"
         name="body"
-        rows="10" 
-        placeholder="Mensaje" 
+        rows="10"
+        placeholder="Mensaje"
         ng-model="body"></textarea>
     </div>
     <button type="submit" class="btn btn-hg btn-primary pull-right">Post</button>
@@ -67,6 +67,6 @@
 
 <script>
   $(document).ready(function(){
-  $('.select').select2();        
+  $('.select').select2();
 });
 </script>

@@ -22,4 +22,18 @@ function($scope, posts, post){
   posts.upvoteComment(post, comment);
 	};
 
+	$scope.incrementPostUpvotes = function(post) {
+	  posts.upvote(post);
+	};
+
+	$scope.deletePost = function(post){
+		console.log("Post to destroy:",post);
+		posts.destroy(post);
+	}
+
+	$scope.editPost = function(post){
+		$scope.postToEdit = posts.get(post.id);
+		console.log($scope.postToEdit);
+	}
+
 }])

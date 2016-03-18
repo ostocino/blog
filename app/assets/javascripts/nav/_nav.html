@@ -9,17 +9,19 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">oscarchavez</a>
+                <a class="navbar-brand" href="#/home">oscarchavez</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="oscarchavezNav">
-                <ul class="nav navbar-nav">
-                  <li><a href="#/home">Home</a></li>
-                  <li ng-hide="signedIn()"><a href="#/login">Log In</a></li>
-                  <li ng-hide="signedIn()"><a href="#/register">Register</a></li>
-                  <li ng-show="signedIn()"><a href="#/">{{user.username }}</a></li>
-                  <li ng-show="signedIn()"><a ng-click="logout()">Log Out</a></li>
-                  <li ng-show="user.username == 'ostocino'"><a class="btn btn-primary" href="#/new">New Post</a></li>
+                <ul class="nav navbar-nav navbar-left">
+                  <li ng-show="user.username == 'ostocino'"><a type="button" href="#/new" class="btn btn-default navbar-btn">Nuevo Post</a></li>
+                  <li ng-show="user.username == 'ostocino'"><a type="button" href="#/new" class="btn btn-info navbar-btn">Configuración</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                  <li ng-hide="signedIn()"><a href="#/login">Iniciar Sesión</a></li>
+                  <li ng-hide="signedIn()"><a href="#/register">Registrar</a></li>
+                  <li ng-show="signedIn()"><a href="#/users/user.username"><i class="fa fa-icon-user"></i>{{user.username}}</a></li>
+                  <li ng-show="signedIn()"><a ng-click="logout()">Salir</a></li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->

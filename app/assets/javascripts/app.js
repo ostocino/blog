@@ -9,7 +9,7 @@ function($stateProvider, $urlRouterProvider) {
       templateUrl: 'home/_home.html',
       controller: 'MainCtrl',
       resolve: {
-        postPromise: ['posts', 
+        postPromise: ['posts',
           function(posts){
             return posts.getAll();
         }]
@@ -25,14 +25,14 @@ function($stateProvider, $urlRouterProvider) {
           console.log(posts);
           return posts.get($stateParams.id);
         }]
-      }      
+      }
     })
     .state('new', {
       url: '/new',
       templateUrl: 'posts/_new.html',
       controller: 'MainCtrl',
       resolve: {
-        postPromise: ['posts', 
+        postPromise: ['posts',
           function(posts){
             return posts.getAll();
         }]
@@ -40,9 +40,15 @@ function($stateProvider, $urlRouterProvider) {
     })
 
     .state('edit', {
-        url: '/edit',
+        url: '/edit/{id}',
         templateUrl: 'posts/_edit.html',
-        controller: 'MainCtrl'
+        controller: 'MainCtrl',
+        resolve: {
+          post: ['$stateParams', 'posts', function($stateParams, posts) {
+            console.log(posts.get($stateParams.id));
+            return posts.get($stateParams.id);
+          }]
+        }
       })
 
     .state('login', {
@@ -65,6 +71,6 @@ function($stateProvider, $urlRouterProvider) {
         })
       }]
     });
-    
+
   $urlRouterProvider.otherwise('home');
 }]);
