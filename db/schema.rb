@@ -31,8 +31,8 @@ ActiveRecord::Schema.define(version: 20150309033358) do
   create_table "posts", force: :cascade do |t|
     t.string   "title"
     t.string   "link"
-    t.string   "imageUrl"
     t.string   "category"
+    t.string   "imageUrl"
     t.text     "body"
     t.integer  "upvotes"
     t.datetime "created_at", null: false
