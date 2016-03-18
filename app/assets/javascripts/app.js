@@ -1,4 +1,4 @@
-angular.module('oscarchavezBlog', ['ui.router', 'templates', 'Devise']).config([
+angular.module('oscarchavezBlog', ['ui.router', 'templates', 'Devise', 'ngFileUpload']).config([
 '$stateProvider',
 '$urlRouterProvider',
 function($stateProvider, $urlRouterProvider) {
@@ -15,7 +15,6 @@ function($stateProvider, $urlRouterProvider) {
         }]
 		  }
     })
-
 		.state('posts', {
 		  url: '/posts/{id}',
 		  templateUrl: 'posts/_posts.html',
@@ -38,7 +37,6 @@ function($stateProvider, $urlRouterProvider) {
         }]
       }
     })
-
     .state('edit', {
         url: '/edit/{id}',
         templateUrl: 'posts/_edit.html',
@@ -50,7 +48,6 @@ function($stateProvider, $urlRouterProvider) {
           }]
         }
       })
-
     .state('login', {
       url: '/login',
       templateUrl: 'auth/_login.html',

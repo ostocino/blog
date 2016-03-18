@@ -1,3 +1,16 @@
+<div class="well well-lg button" style="height: 140px;" ngf-select="uploadFile($file)">
+  <h4>File</h4>
+  <small ng-hide="f.progress >= 1">Upload new photo (Click here)</small>
+  <small ng-show="f.progress == 100"> Photo uploaded / Photo téléchargée (Click here to upload another</small>
+  <div class="progress" ng-show="f.progress >= 0 || f.progress <= 99">
+    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: {{f.progress}}%">
+      <span class="sr-only" ng-bind="f.progress + '%'">{{f.progress}}</span>
+    </div>
+  </div>
+</div>
+
+
+
 <div class="home">
   <form ng-submit="addPost()">
     <h3>Añadir nuevo Post</h3>
@@ -22,6 +35,8 @@
             <option value="blog">Blog</option>
           </select>
         </div>
+
+
         <div class="col-xs-6">
           <label>Imagen Principal</label>
           <div class="form-group">
