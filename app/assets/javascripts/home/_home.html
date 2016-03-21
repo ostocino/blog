@@ -20,7 +20,6 @@
         </li>
       </ul>
     </div>
-
     <!-- Blog Post -->
     <div ng-repeat="post in posts">
       <h2>
@@ -33,7 +32,7 @@
       <hr>
       <img class="img-responsive" src="http://placehold.it/900x300" alt="">
       <hr>
-      <p>{{post.body | limitTo: 200}}.</p>
+      <p>{{post.body | limitTo: 200}} ...</p>
       <a class="btn btn-primary" href="{{post.link}}">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
       <a class="btn btn-info" ng-click="incrementUpvotes(post)"><span class="glyphicon glyphicon-thumbs-up"></span>  Like</a>
       <a ng-show="post.user.username == 'ostocino'" class="btn btn-warning" href="#/edit/{{post.id}}">Editar Post</a>

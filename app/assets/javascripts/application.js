@@ -10,4 +10,7 @@
 //= require angular-rails-templates
 //= require angular-ui-router
 //= require angular-devise
+//= require angular-marked
+//= require angulike
+//= require marked
 //= require_tree .

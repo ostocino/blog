@@ -14,10 +14,11 @@ gem 'angular_rails_csrf'
 gem 'pry'
 gem 'devise', '~> 3.4.0'
 gem 'jquery-ui-rails'
-gem 'less-rails-bootstrap' 
+gem 'less-rails-bootstrap'
 gem 'designmodo-flatuipro-rails', '~> 1.3.2.0.branch'
 gem 'therubyracer'
 gem 'pg'
+gem 'redcarpet', '~>3.0.0'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

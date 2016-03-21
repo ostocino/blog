@@ -5,7 +5,14 @@ angular.module('oscarchavezBlog').controller('PostsCtrl', [
 'post',
 function($scope, posts, post){
 	$scope.post = post;
+	$scope.postBody = post.body;
 	console.log("post", $scope.post);
+
+	$scope.postShare = {
+		url: 'http://oscarchavez.me/' + $scope.post.link,
+		name: $scope.post.title,
+		imageUrl: $scope.post.image_url
+	};
 
 	$scope.addComment = function(){
 	  if($scope.body === '') { return; }
@@ -18,6 +25,10 @@ function($scope, posts, post){
 	  $scope.body = '';
 	};
 
+	$scope.deleteComment = function(comment){
+		posts.destroyComment(post, comment);
+	};
+
 	$scope.incrementUpvotes = function(comment){
   	posts.upvoteComment(post, comment);
 	};
@@ -27,7 +38,6 @@ function($scope, posts, post){
 	};
 
 	$scope.deletePost = function(post){
-		console.log("Post to destroy:",post);
 		posts.destroy(post);
 	}
 

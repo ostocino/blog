@@ -1,4 +1,4 @@
-angular.module('oscarchavezBlog', ['ui.router', 'templates', 'Devise', 'ngFileUpload']).config([
+angular.module('oscarchavezBlog', ['ui.router', 'templates', 'Devise', 'ngFileUpload', 'hc.marked', 'angulike']).config([
 '$stateProvider',
 '$urlRouterProvider',
 function($stateProvider, $urlRouterProvider) {
@@ -70,4 +70,18 @@ function($stateProvider, $urlRouterProvider) {
     });
 
   $urlRouterProvider.otherwise('home');
+}])
+//Marked Provider, for directive 'marked'
+.config(['markedProvider', function(markedProvider){
+  markedProvider.setOptions({
+    gfm: true,
+    tables: true,
+    highlight: function(code, lang){
+      if(lang){
+        return hljs.highlight(lang, code, true).value;
+      } else{
+        return hljs.highlightAuto(code).value;
+      }
+    }
+  });
 }]);

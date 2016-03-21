@@ -1,36 +1,61 @@
-<div class="page-header">
-  <h2>
-    <a href="{{post.link}}">{{post.title}}</a>
-  </h2>
-  <p >
-    por <a href="#/users/{{post.user.username}}">{{post.user.username}}</a> | {{post.category}} | {{post.upvotes}} likes
-  </p>
-  <p><span class="glyphicon glyphicon-time"></span> Posteado {{post.created_at | date: 'd/MMM,yyyy h:mm a'}}</p>
-  <hr>
-  <img class="img-responsive" src="http://placehold.it/900x300" alt="">
-  <hr>
-  <p>{{post.body}}</p>
-  <a class="btn btn-info" ng-click="incrementPostUpvotes(post)"><span class="glyphicon glyphicon-thumbs-up"></span> Like</a>
-  <a ng-show="post.user.username == 'ostocino'" class="btn btn-warning" href="#/edit/{{post.id}}">Editar Post</a>
-  <a ng-show="post.user.username == 'ostocino'" class="btn btn-danger" ng-click="deletePost(post)">Borrar Post</a>
-</div>
-<h2>Comentarios</h2>
-<div ng-repeat="comment in post.comments | orderBy:'-upvotes'">
+<div class="row">
+  <div class="col-md-12">
+      <!--Image-->
+      <br>
+      <img class="img-responsive center" src="http://placehold.it/1200x400" alt="">
 
-  <button class="btn btn-info">{{comment.upvotes}}  <span class="glyphicon glyphicon-thumbs-up" ng-click="incrementUpvotes(comment)"></span></button>
-  <span style="font-size:24px;"><strong><a href="{{post.user.username}}"> {{comment.user.username}}</a>:</strong></span>
-  <span style="font-size:20px; margin-left:10px;">{{comment.body}}</span>
-</div>
-<br>
-<form ng-submit="addComment()"
-  style="margin-top:30px;">
-  <h3>Añade un Comentario</h3>
+      <hr>
 
-  <div class="form-group">
-    <input type="text"
-    class="form-control"
-    placeholder="Comment"
-    ng-model="body"></input>
+      <h2>
+        <a href="{{post.link}}">{{post.title}}</a>
+      </h2>
+      <p >
+        por <a href="#/users/{{post.user.username}}">{{post.user.username}}</a> | {{post.category}} | {{post.upvotes}} likes
+      </p>
+      <p><span class="glyphicon glyphicon-time"></span> Posteado {{post.created_at | date: 'd/MMM,yyyy h:mm'}}</p>
+
+      <!--Social-->
+      <div class="row-fluid">
+        <div class="col-md-12 social">
+          <div style="display: inline;" class="fb" fb-like="postShare.url"></div>
+          <div style="display: inline;" tweet="postShare.name" tweet-url="postShare.url"></div>
+          <div style="display: inline;" google-plus="postShare.url"></div>
+        </div>
+      </div>
+
+      <div marked="postBody"></div>
+
+      <br>
+      <a class="btn btn-info" ng-click="incrementPostUpvotes(post)"><span class="glyphicon glyphicon-thumbs-up"></span> Like</a>
+      <a ng-show="post.user.username == 'ostocino'" class="btn btn-warning" href="#/edit/{{post.id}}">Editar Post</a>
+      <a ng-show="post.user.username == 'ostocino'" class="btn btn-danger" ng-click="deletePost(post)">Borrar Post</a>
+
+      <h2>Comentarios</h2>
+      <div ng-repeat="comment in post.comments | orderBy:'-upvotes'">
+
+        <button class="btn btn-info">{{comment.upvotes}}  <span class="glyphicon glyphicon-thumbs-up" ng-click="incrementUpvotes(comment)"></span></button>
+        <span style="font-size:24px;"><strong><a href="{{post.user.username}}"> {{comment.user.username}}</a>:</strong></span>
+        <span style="font-size:20px; margin-left:10px;">{{comment.body}}</span>
+        <a ng-click="deleteComment(comment)" class="text-danger" ng-show="post.user.username == 'ostocino'"> Delete</a>
+
+        <div ng-show="comment.length == 0">
+          <p>No hay comentarios aún.</p>
+        </div>
+      </div>
+      <br>
+      <hr>
+      <form ng-submit="addComment()"
+      style="margin-top:30px;">
+      <h5>Añade un comentario</h5>
+      <div class="form-group">
+        <input type="text"
+        class="form-control"
+        placeholder="Comment"
+        ng-model="body"></input>
+      </div>
+      <button type="submit" class="btn btn-primary">Enviar</button>
+      </form>
+      <br>
   </div>
-  <button type="submit" class="btn btn-primary">Enviar</button>
-</form>
+</div>
+

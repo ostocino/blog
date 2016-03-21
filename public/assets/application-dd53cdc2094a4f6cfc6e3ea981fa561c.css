@@ -6761,50 +6761,50 @@ button.close {
 /*# sourceMappingURL=bootstrap.css.map */
 @font-face {
   font-family: 'Lato';
-  src: url(/assets/lato/lato-black-071d6233b780433145b695408aa606a5.eot);
-  src: url(/assets/lato/lato-black-071d6233b780433145b695408aa606a5.eot?#iefix) format('embedded-opentype'), url(/assets/lato/lato-black-411dd23f5827a30abf5f8413938abb85.woff) format('woff'), url(/assets/lato/lato-black-80fcb9cbf389f8a236762ea7e8afca7e.ttf) format('truetype'), url(/assets/lato/lato-black-a39dfe8fba90ee1dcb9155692dcc440d.svg#latoblack) format('svg');
+  src: url(/assets/lato/lato-black-b81c138d6edfdeb494b2c9ccbdebd02f.eot);
+  src: url(/assets/lato/lato-black-b81c138d6edfdeb494b2c9ccbdebd02f.eot?#iefix) format('embedded-opentype'), url(/assets/lato/lato-black-6c728b10aa4c8557f103884615b13e2d.woff) format('woff'), url(/assets/lato/lato-black-47e415bab45f32599ac16b75384f0fd8.ttf) format('truetype'), url(/assets/lato/lato-black-9dc282157108ac8021c74aa78195e654.svg#latoblack) format('svg');
   font-weight: 900;
   font-style: normal;
 }
 @font-face {
   font-family: 'Lato';
-  src: url(/assets/lato/lato-bold-17564ef7fd60c1b009b7ee4958251847.eot);
-  src: url(/assets/lato/lato-bold-17564ef7fd60c1b009b7ee4958251847.eot?#iefix) format('embedded-opentype'), url(/assets/lato/lato-bold-75e13fb1f512bfe699a3c5dfdb50faf0.woff) format('woff'), url(/assets/lato/lato-bold-72fbdc7ead14c310173b65168f6ca834.ttf) format('truetype'), url(/assets/lato/lato-bold-1fca27bababfa0bee8eb88b89f2cc9b2.svg#latobold) format('svg');
+  src: url(/assets/lato/lato-bold-3b53a4ef9add7652f3cef4636da4fdcd.eot);
+  src: url(/assets/lato/lato-bold-3b53a4ef9add7652f3cef4636da4fdcd.eot?#iefix) format('embedded-opentype'), url(/assets/lato/lato-bold-0e71d7cfdca42d9f57d138c0a6c7c3f5.woff) format('woff'), url(/assets/lato/lato-bold-911a1c1688de42d6372a8c21995500d6.ttf) format('truetype'), url(/assets/lato/lato-bold-2623291768d474d81debb2ca55c01af1.svg#latobold) format('svg');
   font-weight: bold;
   font-style: normal;
 }
 @font-face {
   font-family: 'Lato';
-  src: url(/assets/lato/lato-bolditalic-1a44c2e47de58039b80a9119d99185a4.eot);
-  src: url(/assets/lato/lato-bolditalic-1a44c2e47de58039b80a9119d99185a4.eot?#iefix) format('embedded-opentype'), url(/assets/lato/lato-bolditalic-136a500f5b88729929e15ae2afd8773f.woff) format('woff'), url(/assets/lato/lato-bolditalic-2b8cbd148c276c3e8f72abe4749e4e60.ttf) format('truetype'), url(/assets/lato/lato-bolditalic-a3a2cdaf35e039f80f29f140948adef4.svg#latobold-italic) format('svg');
+  src: url(/assets/lato/lato-bolditalic-cc8a8453ac46745e0a840e470bf54c3b.eot);
+  src: url(/assets/lato/lato-bolditalic-cc8a8453ac46745e0a840e470bf54c3b.eot?#iefix) format('embedded-opentype'), url(/assets/lato/lato-bolditalic-4483fb93f216a8504e727a1e21fd8d73.woff) format('woff'), url(/assets/lato/lato-bolditalic-638c010bc732acde58a81df1580959b8.ttf) format('truetype'), url(/assets/lato/lato-bolditalic-540f94d22fde813422fb3fe8dc0b8adc.svg#latobold-italic) format('svg');
   font-weight: bold;
   font-style: italic;
 }
 @font-face {
   font-family: 'Lato';
-  src: url(/assets/lato/lato-italic-20594c49e91e90139c15008bc4b8bddd.eot);
-  src: url(/assets/lato/lato-italic-20594c49e91e90139c15008bc4b8bddd.eot?#iefix) format('embedded-opentype'), url(/assets/lato/lato-italic-661cd4b6d96fbf9242e13c70a3f35726.woff) format('woff'), url(/assets/lato/lato-italic-61126413104c7e9018071b7880746173.ttf) format('truetype'), url(/assets/lato/lato-italic-c2a0a6d2f0e3ece224815e31760ceabe.svg#latoitalic) format('svg');
+  src: url(/assets/lato/lato-italic-81c1afc9d655a55e12cf14a064b079fd.eot);
+  src: url(/assets/lato/lato-italic-81c1afc9d655a55e12cf14a064b079fd.eot?#iefix) format('embedded-opentype'), url(/assets/lato/lato-italic-371e202085ac6d5311d16145aa12e63c.woff) format('woff'), url(/assets/lato/lato-italic-50a77b192251b4831b6481c1f24e08ef.ttf) format('truetype'), url(/assets/lato/lato-italic-34d88efaf3cd9dd0d289174e58e08746.svg#latoitalic) format('svg');
   font-weight: normal;
   font-style: italic;
 }
 @font-face {
   font-family: 'Lato';
-  src: url(/assets/lato/lato-light-12b189c94f1c2f5cd0a24564acad2bcc.eot);
-  src: url(/assets/lato/lato-light-12b189c94f1c2f5cd0a24564acad2bcc.eot?#iefix) format('embedded-opentype'), url(/assets/lato/lato-light-3f8e2ad5650d89fcce33d7f7dfa889e4.woff) format('woff'), url(/assets/lato/lato-light-74e89bde896ee09290772f8d93a59f75.ttf) format('truetype'), url(/assets/lato/lato-light-82fc4e0a3cf0eab31cca1c0d98c996ba.svg#latolight) format('svg');
+  src: url(/assets/lato/lato-light-d0e528371cd1e686a46448c0e915f10f.eot);
+  src: url(/assets/lato/lato-light-d0e528371cd1e686a46448c0e915f10f.eot?#iefix) format('embedded-opentype'), url(/assets/lato/lato-light-cfeb13bb6b5c284bfae513d07d11cf0f.woff) format('woff'), url(/assets/lato/lato-light-3a892f85117de3ebc3ae1c1d3a07c63c.ttf) format('truetype'), url(/assets/lato/lato-light-2384b5c5c28b88e864a2414bd9cc9d69.svg#latolight) format('svg');
   font-weight: 300;
   font-style: normal;
 }
 @font-face {
   font-family: 'Lato';
-  src: url(/assets/lato/lato-regular-16b2dbcd280ea3646a33bd4f3a5f6ae1.eot);
-  src: url(/assets/lato/lato-regular-16b2dbcd280ea3646a33bd4f3a5f6ae1.eot?#iefix) format('embedded-opentype'), url(/assets/lato/lato-regular-500350a2cdf525bffc78abc423b64923.woff) format('woff'), url(/assets/lato/lato-regular-59a12b9e47aceeabee1b4cdaf6e15e96.ttf) format('truetype'), url(/assets/lato/lato-regular-7fdae4eb59325e5040570f59e8334b0e.svg#latoregular) format('svg');
+  src: url(/assets/lato/lato-regular-3ec575cf5050bee8122ba33c97f6a494.eot);
+  src: url(/assets/lato/lato-regular-3ec575cf5050bee8122ba33c97f6a494.eot?#iefix) format('embedded-opentype'), url(/assets/lato/lato-regular-3d0feab2ce6523b88a928c77ffeec760.woff) format('woff'), url(/assets/lato/lato-regular-3f8fb4751bd3d02f560d48bbb4ed2047.ttf) format('truetype'), url(/assets/lato/lato-regular-a2a3ec19cf56395d9dfe40da92047e8a.svg#latoregular) format('svg');
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: 'Flat-UI-Pro-Icons';
-  src: url(/assets/glyphicons/flat-ui-pro-icons-regular-b66a5ed0f12cc835e772943b2c5ca374.eot);
-  src: url(/assets/glyphicons/flat-ui-pro-icons-regular-b66a5ed0f12cc835e772943b2c5ca374.eot?#iefix) format('embedded-opentype'), url(/assets/glyphicons/flat-ui-pro-icons-regular-8009531ea283c4abc276e699a9bbcc9e.woff) format('woff'), url(/assets/glyphicons/flat-ui-pro-icons-regular-96b355874b6c6302e962d74a55e07e47.ttf) format('truetype'), url(/assets/glyphicons/flat-ui-pro-icons-regular-162d6e69498634f8afb2bf1692e5c71d.svg#flat-ui-pro-icons-regular) format('svg');
+  src: url(/assets/glyphicons/flat-ui-pro-icons-regular-3e7fc25c3b100450fc1da808e154fca0.eot);
+  src: url(/assets/glyphicons/flat-ui-pro-icons-regular-3e7fc25c3b100450fc1da808e154fca0.eot?#iefix) format('embedded-opentype'), url(/assets/glyphicons/flat-ui-pro-icons-regular-619dfb1866b761f6810f3d147a9f95d2.woff) format('woff'), url(/assets/glyphicons/flat-ui-pro-icons-regular-0841143e1d21e4e1c934faa3d4d9648d.ttf) format('truetype'), url(/assets/glyphicons/flat-ui-pro-icons-regular-df4f8c640637505a1e61b039ca4eb5ae.svg#flat-ui-pro-icons-regular) format('svg');
 }
 [class^="fui-"],
 [class*="fui-"] {
@@ -15237,15 +15237,32 @@ input.todo-search-field::-webkit-input-placeholder {
 
 /* line 29, /Users/os/Desktop/oscarchavez/blog/app/assets/stylesheets/application.scss */
 .footer {
-  position: absolute;
-  bottom: 0;
+  position: relative;
+  bottom: -10px;
   width: 100%;
   /* Set the fixed height of the footer here */
-  height: 60px;
-  background-color: #f5f5f5;
+  height: 50px;
 }
 
 /* line 38, /Users/os/Desktop/oscarchavez/blog/app/assets/stylesheets/application.scss */
 .container .text-muted {
   margin: 20px 0;
+}
+
+/* line 42, /Users/os/Desktop/oscarchavez/blog/app/assets/stylesheets/application.scss */
+.fb span {
+  height: 30px !important;
+}
+
+/* line 46, /Users/os/Desktop/oscarchavez/blog/app/assets/stylesheets/application.scss */
+.social {
+  right: 20px;
+  padding-bottom: 10px;
+}
+
+/* Override Bootstrap 3 font locations */
+@font-face {
+  font-family: 'Glyphicons Halflings';
+  src: url("/assets/bootstrap/fonts/glyphicons-halflings-regular.eot");
+  src: url("/assets/bootstrap/fonts/glyphicons-halflings-regular.eot?#iefix") format("embedded-opentype"), url("/assets/bootstrap/fonts/glyphicons-halflings-regular.woff") format("woff"), url("/assets/bootstrap/fonts/glyphicons-halflings-regular.ttf") format("truetype"), url("/assets/bootstrap/fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular") format("svg");
 }
