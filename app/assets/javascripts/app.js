@@ -42,9 +42,10 @@ function($stateProvider, $urlRouterProvider) {
         templateUrl: 'posts/_edit.html',
         controller: 'MainCtrl',
         resolve: {
-          post: ['$stateParams', 'posts', function($stateParams, posts) {
-            console.log(posts.get($stateParams.id));
-            return posts.get($stateParams.id);
+          postPromise: ['posts',
+          function(posts){
+            console.log(posts);
+            return posts.getAll();
           }]
         }
       })
