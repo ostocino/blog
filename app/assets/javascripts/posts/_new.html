@@ -59,22 +59,24 @@
       </div>
     </div>
     <div class="form-group">
-      <label>Link (Si en blanco, link al post)</label>
-      <input
-        type="text"
+      <label>Extracto</label>
+      <textarea
         class="form-control"
-        name="link"
-        placeholder="Link"
-        ng-model="link"></input>
+        name="body"
+        rows="2"
+        placeholder="Mensaje"
+        ng-model="post.excerpt">
+      </textarea>
     </div>
     <div class="form-group">
       <label>Post</label>
       <textarea
         class="form-control"
         name="body"
-        rows="10"
+        rows="15"
         placeholder="Mensaje"
-        ng-model="body"></textarea>
+        ng-model="body">
+        </textarea>
     </div>
     <button type="submit" class="btn btn-hg btn-primary pull-right">Post</button>
   </form>

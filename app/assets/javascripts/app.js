@@ -4,6 +4,7 @@ angular.module('oscarchavezBlog', ['ui.router', 'templates', 'Devise', 'ngFileUp
 function($stateProvider, $urlRouterProvider) {
 
   $stateProvider
+
     .state('home', {
       url: '/home',
       templateUrl: 'home/_home.html',
@@ -21,7 +22,6 @@ function($stateProvider, $urlRouterProvider) {
 		  controller: 'PostsCtrl',
       resolve: {
         post: ['$stateParams', 'posts', function($stateParams, posts) {
-          console.log(posts);
           return posts.get($stateParams.id);
         }]
       }
@@ -38,14 +38,12 @@ function($stateProvider, $urlRouterProvider) {
       }
     })
     .state('edit', {
-        url: '/edit/{id}',
+        url: '/posts/{id}/edit',
         templateUrl: 'posts/_edit.html',
-        controller: 'MainCtrl',
+        controller: 'PostsCtrl',
         resolve: {
-          postPromise: ['posts',
-          function(posts){
-            console.log(posts);
-            return posts.getAll();
+          post: ['$stateParams', 'posts', function($stateParams, posts) {
+            return posts.get($stateParams.id);
           }]
         }
       })
@@ -72,6 +70,7 @@ function($stateProvider, $urlRouterProvider) {
 
   $urlRouterProvider.otherwise('home');
 }])
+
 //Marked Provider, for directive 'marked'
 .config(['markedProvider', function(markedProvider){
   markedProvider.setOptions({

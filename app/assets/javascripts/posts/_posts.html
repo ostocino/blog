@@ -27,7 +27,7 @@
 
       <br>
       <a class="btn btn-info" ng-click="incrementPostUpvotes(post)"><span class="glyphicon glyphicon-thumbs-up"></span> Like</a>
-      <a ng-show="post.user.username == 'ostocino'" class="btn btn-warning" href="#/edit/{{post.id}}">Editar Post</a>
+      <a ng-show="post.user.username == 'ostocino'" class="btn btn-warning" href="#/posts/{{post.id}}/edit">Editar Post</a>
       <a ng-show="post.user.username == 'ostocino'" class="btn btn-danger" ng-click="deletePost(post)">Borrar Post</a>
 
       <h2>Comentarios</h2>

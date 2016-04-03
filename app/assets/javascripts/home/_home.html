@@ -23,7 +23,7 @@
     <!-- Blog Post -->
     <div ng-repeat="post in posts">
       <h2>
-        <a href="{{post.link}}">{{post.title}}</a>
+        <a href="#/posts/{{post.id}}">{{post.title}}</a>
       </h2>
       <p >
         por <a href="#/users/{{post.user.username}}">{{post.user.username}}</a> | {{post.category}}
@@ -31,12 +31,12 @@
       <p ng-show="post.upvotes > 0">{{post.upvotes}} likes</p>
       <p><span class="glyphicon glyphicon-time"></span> Posteado {{post.created_at | date: 'd MMM, yyyy h:mm'}}</p>
       <hr>
-      <img class="img-responsive" src="{{post.image_url}}" alt="">
+      <img class="img-responsive" src="#/{{post.image_url}}" alt="" href="#/posts/{{post.id}}">
       <br>
-      <p ng-show="post.excerpt">{{post.excerpt}} ...</p>
-      <a class="btn btn-primary" href="{{post.link}}">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
+      <p ng-show="post.excerpt">{{post.excerpt}}...</p>
+      <a class="btn btn-primary" href="#/posts/{{post.id}}">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
       <a class="btn btn-info" ng-click="incrementUpvotes(post)"><span class="glyphicon glyphicon-thumbs-up"></span>  Like</a>
-      <a ng-show="post.user.username == 'ostocino'" class="btn btn-warning" href="#/edit/{{post.id}}">Editar Post</a>
+      <a ng-show="post.user.username == 'ostocino'" class="btn btn-warning" href="#/posts/{{post.id}}/edit">Editar Post</a>
       <a ng-show="post.user.username == 'ostocino'" class="btn btn-danger" ng-click="deletePost(post)"><i class="glyphicon glyphicon-bin"></i>Borrar Post</a>
       <hr>
     </div>

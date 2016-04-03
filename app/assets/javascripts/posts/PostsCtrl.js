@@ -1,4 +1,3 @@
-
 angular.module('oscarchavezBlog').controller('PostsCtrl', [
 '$scope',
 'posts',
@@ -6,7 +5,6 @@ angular.module('oscarchavezBlog').controller('PostsCtrl', [
 function($scope, posts, post){
 	$scope.post = post;
 	$scope.postBody = post.body;
-	console.log("post", $scope.post);
 
 	$scope.postShare = {
 		url: 'http://oscarchavez.me/' + $scope.post.link,
@@ -42,8 +40,13 @@ function($scope, posts, post){
 	}
 
 	$scope.editPost = function(post){
-		$scope.postToEdit = posts.get(post.id);
-		console.log($scope.postToEdit);
+		console.log(post);
+		posts.edit(post);
+	}
+
+	$scope.updatePost = function(post){
+		console.log(post);
+		posts.update(post);
 	}
 
 }])

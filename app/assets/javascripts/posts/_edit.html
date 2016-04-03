@@ -1,19 +1,19 @@
 <div class="home">
-  <form ng-submit="editPost()">
-    <h3>Editar el Post </h3>
+  <form ng-submit="updatePost(post)">
+    <h3>Editar el Post: {{post.title}}</h3>
     <div class="form-group">
       <label>Titulo</label>
       <input
         type="text"
         class="form-control"
         name="Title"
-        ng-model="title"></input>
+        ng-model="post.title"></input>
     </div>
     <div class="form-group">
       <div class="row">
         <div class="col-xs-6">
           <label>Categoria</label>
-          <select class="form-control select select-primary select-block mbl" name="category" ng-model="category">
+          <select class="form-control select select-primary select-block mbl" name="category" ng-model="post.category">
             <option value="">Escoge una categoría</option>
             <option value="desarrollos">Desarrollo</option>
             <option value="vrar">VR/AR</option>
@@ -43,22 +43,24 @@
       </div>
     </div>
     <div class="form-group">
-      <label>Link (Si en blanco, link al post)</label>
-      <input
-        type="text"
+      <label>Extracto</label>
+      <textarea
         class="form-control"
-        name="link"
-        placeholder="Link"
-        ng-model="link"></input>
+        name="body"
+        rows="2"
+        placeholder="Mensaje"
+        ng-model="post.excerpt">
+      </textarea>
     </div>
     <div class="form-group">
       <label>Post</label>
       <textarea
         class="form-control"
         name="body"
-        rows="10"
+        rows="15"
         placeholder="Mensaje"
-        ng-model="body"></textarea>
+        ng-model="post.body">
+      </textarea>
     </div>
     <button type="submit" class="btn btn-hg btn-primary pull-right">Post</button>
   </form>

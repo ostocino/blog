@@ -1,7 +1,8 @@
 class PostsController < ApplicationController
-  before_filter :authenticate_user!, only: [:create, :upvote]  
+  before_filter :authenticate_user!, only: [:create, :upvote]
+
   respond_to :json
-  
+
   def index
     respond_with Post.all
   end
@@ -10,7 +11,7 @@ class PostsController < ApplicationController
     respond_with Post.create(post_params.merge(user_id: current_user.id))
   end
 
-  def show         
+  def show
     respond_with Post.find(params[:id])
   end
 
@@ -21,16 +22,22 @@ class PostsController < ApplicationController
   end
 
   def edit
+    respond_with = Post.find(params[:id])
+  end
+
+  def update
+    @post = Post.find(params[:id])
+    @post.update(post_params)
   end
 
   def destroy
-     Post.find(params[:id]).destroy
-     #puts Post.find(params[:id])
+     @post = Post.find(params[:id])
+     @post.destroy
      respond_with Post.all
   end
 
-  private	
+  private
   def post_params
-    params.require(:post).permit(:link, :title, :body, :category)
-  end	
+    params.permit(:id, :title, :link, :body, :excerpt, :category)
+  end
 end

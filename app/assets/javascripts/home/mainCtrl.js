@@ -29,11 +29,6 @@ function($scope, $location, posts){
 		posts.destroy(post);
 	}
 
-	$scope.editPost = function(post){
-		$scope.postToEdit = posts.get(post.id);
-		console.log($scope.postToEdit);
-	}
-
 	$scope.incrementUpvotes = function(post) {
 	  posts.upvote(post);
 	};
