@@ -45,7 +45,6 @@ function($scope, posts, post){
 	}
 
 	$scope.updatePost = function(post){
-		console.log(post);
 		posts.update(post);
 	}
 

@@ -30,16 +30,16 @@ angular.module('oscarchavezBlog').factory('posts', ['$http', function($http){
   };
 
   o.update = function(post){
+    console.log("UPDATE", post);
     return $http.put('/posts/' + post.id).success(function(data){
-      console.log("UPDATE", data);
-      o.posts.push(data);
-    })
-  }
+      console.log('UPDATE PUT DATA', data);
+      o.posts.push(post);
+    });
+  };
 
 
 	o.upvote = function(post) {
-	  return $http.put('/posts/' + post.id + '/upvote.json')
-	    .success(function(data){
+	  return $http.put('/posts/' + post.id + '/upvote.json').success(function(data){
 	      post.upvotes += 1;
 	    });
 	};

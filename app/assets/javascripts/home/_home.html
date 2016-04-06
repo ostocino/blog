@@ -1,7 +1,7 @@
 <div class="row">
 
   <!-- Blog Entries Column -->
-  <div class="col-md-8">
+  <div class="col-md-12">
 
     <h1 class="page-header">
       oscarchavez
@@ -22,19 +22,18 @@
     </div>
     <!-- Blog Post -->
     <div ng-repeat="post in posts">
-      <h2>
+      <h3>
         <a href="#/posts/{{post.id}}">{{post.title}}</a>
-      </h2>
+      </h3>
       <p >
         por <a href="#/users/{{post.user.username}}">{{post.user.username}}</a> | {{post.category}}
       </p>
       <p ng-show="post.upvotes > 0">{{post.upvotes}} likes</p>
       <p><span class="glyphicon glyphicon-time"></span> Posteado {{post.created_at | date: 'd MMM, yyyy h:mm'}}</p>
-      <hr>
-      <img class="img-responsive" src="#/{{post.image_url}}" alt="" href="#/posts/{{post.id}}">
+      <!--img class="img-responsive" src="#/{{post.image_url}}" alt="" href="#/posts/{{post.id}}"-->
       <br>
       <p ng-show="post.excerpt">{{post.excerpt}}...</p>
-      <a class="btn btn-primary" href="#/posts/{{post.id}}">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
+      <a class="btn btn-primary" href="#/posts/{{post.id}}">Leer más <span class="glyphicon glyphicon-chevron-right"></span></a>
       <a class="btn btn-info" ng-click="incrementUpvotes(post)"><span class="glyphicon glyphicon-thumbs-up"></span>  Like</a>
       <a ng-show="post.user.username == 'ostocino'" class="btn btn-warning" href="#/posts/{{post.id}}/edit">Editar Post</a>
       <a ng-show="post.user.username == 'ostocino'" class="btn btn-danger" ng-click="deletePost(post)"><i class="glyphicon glyphicon-bin"></i>Borrar Post</a>
@@ -44,65 +43,13 @@
     <!-- Pager -->
     <ul class="pager">
       <li class="previous">
-        <a href="#">&larr; Older</a>
+        <a href="#">&larr; Antiguo</a>
       </li>
       <li class="next">
-        <a href="#">Newer &rarr;</a>
+        <a href="#">Nuevo &rarr;</a>
       </li>
     </ul>
 
-  </div>
-
-  <!-- Blog Sidebar Widgets Column -->
-  <div class="col-md-4">
-    <div class="sidebar">
-      <!-- Blog Search Well -->
-      <div class="well">
-        <h4>Buscar</h4>
-        <div class="input-group">
-          <input type="text" class="form-control">
-          <span class="input-group-btn">
-            <button class="btn btn-default" type="button">
-              <span class="glyphicon glyphicon-search"></span>
-            </button>
-          </span>
-        </div>
-        <!-- /.input-group -->
-      </div>
-
-      <div class="well">
-        <h4>Links</h4>
-        <div class="row">
-          <div class="col-lg-6">
-            <button type="button" href="http://vector3.co" class="btn btn-danger">Vector3</button>
-            <button type="button" href="http://mxvr.co" class="btn btn-success">MXVR</button>
-          </div>
-        </div>
-      </div>
-      <!-- Popular Posts Well -->
-      <div class="well">
-        <h4>Populares</h4>
-        <div class="row">
-          <div class="col-lg-6">
-            <div ng-repeat="post in posts | limitTo: 5">
-              <p>
-                <a href="{{post.link}}">{{post.title}} | {{post.upvotes}} likes</a>
-
-              </p>
-            </div>
-          </div>
-          <!-- /.col-lg-6 -->
-        </div>
-        <!-- /.row -->
-      </div>
-
-      <!-- Side Widget Well -->
-      <div class="well">
-        <h4><a href="http:///twitter.com/ostocino">@ostocino</a></h4>
-        <a class="twitter-timeline" href="https://twitter.com/ostocino" data-widget-id="694431438804901888"> </a>
-        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-      </div>
-    </div>
   </div>
 
 </div>

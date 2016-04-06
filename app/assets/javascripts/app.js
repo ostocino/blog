@@ -15,6 +15,10 @@ function($stateProvider, $urlRouterProvider) {
             return posts.getAll();
         }]
 		  }
+    }).state('about', {
+      url: '/about',
+      templateUrl: 'about/_about.html',
+      controller: 'MainCtrl'
     })
 		.state('posts', {
 		  url: '/posts/{id}',

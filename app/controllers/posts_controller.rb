@@ -27,13 +27,15 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-    @post.update(post_params)
+    @post.update_attributes!(post_params)
+    flash[:success] = "Your post have been updated!"
+    render json: @post
   end
 
   def destroy
      @post = Post.find(params[:id])
      @post.destroy
-     respond_with Post.all
+     render json: Post.all
   end
 
   private
