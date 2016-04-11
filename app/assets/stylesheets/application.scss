@@ -15,6 +15,9 @@
  *= require_self
  */
 
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
 .home
 {
   padding-top: 50px;
@@ -47,13 +50,3 @@
   padding-bottom: 10px;
 }
 
-
-/* Override Bootstrap 3 font locations */
-@font-face {
-  font-family: 'Glyphicons Halflings';
-  src: url('/assets/bootstrap/fonts/glyphicons-halflings-regular.eot');
-  src: url('/assets/bootstrap/fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'),
-  url('/assets/bootstrap/fonts/glyphicons-halflings-regular.woff') format('woff'),
-  url('/assets/bootstrap/fonts/glyphicons-halflings-regular.ttf') format('truetype'),
-  url('/assets/bootstrap/fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
-}

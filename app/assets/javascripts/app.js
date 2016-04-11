@@ -1,4 +1,4 @@
-angular.module('oscarchavezBlog', ['ui.router', 'templates', 'Devise', 'ngFileUpload', 'hc.marked', 'angulike']).config([
+angular.module('oscarchavezBlog', ['ui.router', 'templates', 'Devise', 'ngFileUpload', 'ngResource', 'hc.marked', 'angulike']).config([
 '$stateProvider',
 '$urlRouterProvider',
 function($stateProvider, $urlRouterProvider) {

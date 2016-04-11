@@ -49,3 +49,4 @@ function($scope, posts, post){
 	}
 
 }])
+

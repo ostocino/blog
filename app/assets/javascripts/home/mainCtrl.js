@@ -6,6 +6,12 @@ function($scope, $location, posts){
 	$scope.posts = posts.posts;
 	$location.path();
 
+	//Filter by category
+	$scope.dev = true;
+	$scope.vrar = true;
+	$scope.blog = true;
+
+
 	$scope.addPost = function(){
 	  if(!$scope.title || $scope.title === ''
 	  	||!$scope.body || $scope.body==='') {

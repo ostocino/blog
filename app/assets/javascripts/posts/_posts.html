@@ -9,10 +9,10 @@
       <h2>
         <a href="{{post.link}}">{{post.title}}</a>
       </h2>
-      <p >
-        por <a href="#/users/{{post.user.username}}">{{post.user.username}}</a> | {{post.category}} | {{post.upvotes}} likes
+      <p>
+        <span ng-show="post.upvotes > 0"><strong>{{post.upvotes}} likes</strong> |</span> por <a href="#/users/{{post.user.username}}">{{post.user.username}}</a> | {{post.category}}
       </p>
-      <p><span class="glyphicon glyphicon-time"></span> Posteado {{post.created_at | date: 'd/MMM,yyyy h:mm'}}</p>
+      <p class="text-muted"><span class="fa fa-clock-o"></span> Posteado {{post.created_at | date: 'd MMM, yyyy h:mm'}}</p>
 
       <!--Social-->
       <div class="row-fluid">
@@ -26,9 +26,9 @@
       <div marked="postBody"></div>
 
       <br>
-      <a class="btn btn-info" ng-click="incrementPostUpvotes(post)"><span class="glyphicon glyphicon-thumbs-up"></span> Like</a>
-      <a ng-show="post.user.username == 'ostocino'" class="btn btn-warning" href="#/posts/{{post.id}}/edit">Editar Post</a>
-      <a ng-show="post.user.username == 'ostocino'" class="btn btn-danger" ng-click="deletePost(post)">Borrar Post</a>
+      <a class="btn btn-info" ng-click="incrementUpvotes(post)"><span class="fa fa-thumbs-o-up"></span>&nbsp;&nbsp;Like</a>
+      <a class="btn btn-warning" href="#/posts/{{post.id}}/edit"><i class="fa fa-pencil"></i>&nbsp;&nbsp;Editar Post</a>
+      <a class="btn btn-danger" ng-click="deletePost(post)"><i class="fa fa-trash"></i>&nbsp;&nbsp;Borrar Post</a>
 
       <h2>Comentarios</h2>
       <div ng-repeat="comment in post.comments | orderBy:'-upvotes'">

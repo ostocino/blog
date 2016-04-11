@@ -11,6 +11,7 @@
 //= require angular-ui-router
 //= require angular-devise
 //= require angular-marked
+//= require angular-resource
 //= require angulike
 //= require marked
 //= require_tree .

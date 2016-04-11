@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_filter :authenticate_user!, only: [:create, :upvote]
+  before_filter :authenticate_user!, only: [:create, :upvote, :update, :destroy]
 
   respond_to :json
 
@@ -21,15 +21,8 @@ class PostsController < ApplicationController
     respond_with @post
   end
 
-  def edit
-    respond_with = Post.find(params[:id])
-  end
-
   def update
-    @post = Post.find(params[:id])
-    @post.update_attributes!(post_params)
-    flash[:success] = "Your post have been updated!"
-    render json: @post
+   respond_with Post.update(params[:id], params[:post])
   end
 
   def destroy
@@ -40,6 +33,6 @@ class PostsController < ApplicationController
 
   private
   def post_params
-    params.permit(:id, :title, :link, :body, :excerpt, :category)
+    params.require(:id).permit(:title, :link, :body, :excerpt, :category)
   end
 end

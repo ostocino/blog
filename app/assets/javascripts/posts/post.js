@@ -1,4 +1,7 @@
-angular.module('oscarchavezBlog').factory('posts', ['$http', function($http){
+angular.module('oscarchavezBlog').factory('posts', ['$http', '$resource', function($http, $resource){
+
+  var postcrud = $resource("/posts/:id", {id: "@id"}, {update: {method: "PUT"}});
+
   var o = {
     posts: [
     ]
@@ -16,10 +19,6 @@ angular.module('oscarchavezBlog').factory('posts', ['$http', function($http){
 
 	  return $http.post('/posts.json', post).success(function(data){
       o.posts.push(data);
-      if(!data.link){
-        data.link = '#/posts/' + data.id;
-        //o.edit(data);
-      };
 	  });
 	};
 
@@ -31,10 +30,7 @@ angular.module('oscarchavezBlog').factory('posts', ['$http', function($http){
 
   o.update = function(post){
     console.log("UPDATE", post);
-    return $http.put('/posts/' + post.id).success(function(data){
-      console.log('UPDATE PUT DATA', data);
-      o.posts.push(post);
-    });
+    postcrud.update(post);
   };
 
 

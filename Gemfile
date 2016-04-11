@@ -18,7 +18,8 @@ gem 'less-rails-bootstrap'
 gem 'designmodo-flatuipro-rails', '~> 1.3.2.0.branch'
 gem 'therubyracer'
 gem 'pg'
-gem 'font-awesome-rails'
+gem 'font-awesome-sass'
+gem 'frontend-generators'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
