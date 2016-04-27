@@ -27,8 +27,8 @@
 
       <br>
       <a class="btn btn-info" ng-click="incrementUpvotes(post)"><span class="fa fa-thumbs-o-up"></span>&nbsp;&nbsp;Like</a>
-      <a class="btn btn-warning" href="#/posts/{{post.id}}/edit"><i class="fa fa-pencil"></i>&nbsp;&nbsp;Editar Post</a>
-      <a class="btn btn-danger" ng-click="deletePost(post)"><i class="fa fa-trash"></i>&nbsp;&nbsp;Borrar Post</a>
+      <!--a class="btn btn-warning" href="#/posts/{{post.id}}/edit"><i class="fa fa-pencil"></i>&nbsp;&nbsp;Editar Post</a-->
+      <!--a class="btn btn-danger" ng-click="deletePost(post)"><i class="fa fa-trash"></i>&nbsp;&nbsp;Borrar Post</a-->
 
       <h2>Comentarios</h2>
       <div ng-repeat="comment in post.comments | orderBy:'-upvotes'">
