@@ -29,8 +29,8 @@
           <label>Categoria</label>
           <select class="form-control select select-primary select-block mbl" name="category" ng-model="category">
             <option value="">Escoge una categoría</option>
-            <option value="desarrollos">Desarrollo</option>
-            <option value="vrar">VR/AR</option>
+            <option value="desarrollo">Desarrollo</option>
+            <option value="vr-ar">VR/AR</option>
             <option value="mxvr">MXVR</option>
             <option value="blog">Blog</option>
           </select>
@@ -65,7 +65,7 @@
         name="body"
         rows="2"
         placeholder="Mensaje"
-        ng-model="post.excerpt">
+        ng-model="excerpt">
       </textarea>
     </div>
     <div class="form-group">
@@ -78,7 +78,7 @@
         ng-model="body">
         </textarea>
     </div>
-    <button type="submit" class="btn btn-hg btn-primary pull-right">Post</button>
+    <button type="submit" class="btn btn-hg btn-primary pull-right">Postear</button>
   </form>
 </div>
 

@@ -17,22 +17,28 @@ function($scope, $location, posts){
 	  	||!$scope.body || $scope.body==='') {
 	  	return;
 	  }
+	  if($scope.category === ''){
+	  	$scope.category == 'blog';
+	  }
 	  posts.create({
 	    title: $scope.title,
 	    link: $scope.link,
 	    category: $scope.category,
+	    excerpt: $scope.excerpt,
 	    body: $scope.body
 	  });
 	  $scope.title = '';
 	  $scope.link = '';
 	  $scope.body = '';
 	  $scope.category = '';
+	  $scope.excerpt = '';
 	  $location.path('/home');
 	};
 
+
 	$scope.deletePost = function(post){
 		console.log("Post to destroy:",post);
-		posts.destroy(post);
+		posts.delete(post);
 	}
 
 	$scope.incrementUpvotes = function(post) {

@@ -16,7 +16,7 @@ angular.module('oscarchavezBlog').factory('posts', ['$http', '$resource', functi
   };
 
 	o.create = function(post) {
-
+    console.log("POST TO CREATE:", post);
 	  return $http.post('/posts.json', post).success(function(data){
       o.posts.push(data);
 	  });
@@ -46,10 +46,10 @@ angular.module('oscarchavezBlog').factory('posts', ['$http', '$resource', functi
 	  });
 	};
 
-  o.destroy = function(post){
+  o.delete = function(post){
     return $http.delete('/posts/' + post.id).success(function(data){
       console.log("msg: ", data);
-      //o.posts.splice(data, post);
+      o.posts.splice(data, post);
     }).error(function(){
       console.log("Error destroying post");
     });
@@ -58,12 +58,14 @@ angular.module('oscarchavezBlog').factory('posts', ['$http', '$resource', functi
   //Comments CRUD
 
 	o.addComment = function(id, comment) {
+    comment.upvote = 0;
 	  return $http.post('/posts/' + id + '/comments.json', comment);
 	};
 
-  o.destroyComment = function(post, comment){
+  o.deleteComment = function(post, comment){
     return $http.delete('/posts/' + post.id +'/comments/' + comment.id).success(function(data){
       console.log("msg:", data);
+      o.posts.comments.splice(data, comment);
     }).error(function(){
       console.log("Error destroying post comment");
     });

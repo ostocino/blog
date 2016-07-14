@@ -27,12 +27,12 @@ class PostsController < ApplicationController
 
   def destroy
      @post = Post.find(params[:id])
-     @post.destroy
+     @post.delete
      render json: Post.all
   end
 
   private
   def post_params
-    params.require(:id).permit(:title, :link, :body, :excerpt, :category)
+    params.permit(:title, :link, :body, :excerpt, :category)
   end
 end

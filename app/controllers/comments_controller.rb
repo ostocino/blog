@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   before_filter :authenticate_user!, only: [:create, :upvote]
-  respond_to :json
+  respond_to :html, :json
 
   def create
     @post = Post.find(params[:post_id])
@@ -18,9 +18,9 @@ class CommentsController < ApplicationController
   def destroy
     @post = Post.find(params[:post_id])
     @comment = @post.comments.find(params[:id])
-    @comment.destroy
-    respond_with @comment
+    @comment.delete
   end
+  
 
   private
   def comment_params

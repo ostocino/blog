@@ -24,7 +24,7 @@ function($scope, posts, post){
 	};
 
 	$scope.deleteComment = function(comment){
-		posts.destroyComment(post, comment);
+		posts.deleteComment(post, comment);
 	};
 
 	$scope.incrementUpvotes = function(comment){
@@ -36,7 +36,7 @@ function($scope, posts, post){
 	};
 
 	$scope.deletePost = function(post){
-		posts.destroy(post);
+		posts.delete(post);
 	}
 
 	$scope.editPost = function(post){

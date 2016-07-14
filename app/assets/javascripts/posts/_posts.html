@@ -4,7 +4,7 @@
       <br>
       <img class="img-responsive center" src="{{post.image_url}}" alt="">
 
-      <hr>
+      
 
       <h2>
         <a href="{{post.link}}">{{post.title}}</a>
@@ -22,23 +22,32 @@
           <div style="display: inline;" google-plus="postShare.url"></div>
         </div>
       </div>
+      <hr>
 
       <div marked="postBody"></div>
 
       <br>
       <a class="btn btn-info" ng-click="incrementUpvotes(post)"><span class="fa fa-thumbs-o-up"></span>&nbsp;&nbsp;Like</a>
-      <!--a class="btn btn-warning" href="#/posts/{{post.id}}/edit"><i class="fa fa-pencil"></i>&nbsp;&nbsp;Editar Post</a-->
-      <!--a class="btn btn-danger" ng-click="deletePost(post)"><i class="fa fa-trash"></i>&nbsp;&nbsp;Borrar Post</a-->
+      <a class="btn btn-warning" href="#/posts/{{post.id}}/edit"><i class="fa fa-pencil"></i>&nbsp;&nbsp;Editar Post</a>
+      <a class="btn btn-danger" ng-click="deletePost(post)"><i class="fa fa-trash"></i>&nbsp;&nbsp;Borrar Post</a>
+       <hr>
 
       <h2>Comentarios</h2>
-      <div ng-repeat="comment in post.comments | orderBy:'-upvotes'">
+      <div ng-repeat="comment in post.comments | orderBy:['-upvotes','-createdAt']">
+        <br/>
+        <div>
+          <span style="font-size:20px;"><a href="{{post.user.username}}">{{comment.user.username}}</a> :</span>
 
-        <button class="btn btn-info">{{comment.upvotes}}  <span class="glyphicon glyphicon-thumbs-up" ng-click="incrementUpvotes(comment)"></span></button>
-        <span style="font-size:24px;"><strong><a href="{{post.user.username}}"> {{comment.user.username}}</a>:</strong></span>
-        <span style="font-size:20px; margin-left:10px;">{{comment.body}}</span>
-        <a ng-click="deleteComment(comment)" class="text-danger" ng-show="post.user.username == 'ostocino'"> Delete</a>
+          <span style="font-size:20px; margin-left:10px;">{{comment.body}}</span>
 
-        <div ng-show="comment.length == 0">
+          <a ng-click="incrementUpvotes(comment)" class="text-info"> {{comment.upvotes}} <span class="glyphicon glyphicon-thumbs-up"></span>&nbsp;&nbsp;</a>
+
+          <a ng-click="deleteComment(comment)" class="text-danger"> Delete&nbsp;&nbsp;</a>
+
+          <a ng-click="replyComment(comment)" class="text-primary"> Reply&nbsp;&nbsp; </a>
+        </div>
+        
+        <div ng-show="post.comments == 0">
           <p>No hay comentarios aún.</p>
         </div>
       </div>
@@ -48,10 +57,13 @@
       style="margin-top:30px;">
       <h5>Añade un comentario</h5>
       <div class="form-group">
-        <input type="text"
+        <textarea
         class="form-control"
-        placeholder="Comment"
-        ng-model="body"></input>
+        name="body"
+        rows="10"
+        placeholder="Comentario"
+        ng-model="body">
+        </textarea>
       </div>
       <button type="submit" class="btn btn-primary">Enviar</button>
       </form>
