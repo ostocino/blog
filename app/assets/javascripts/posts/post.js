@@ -77,6 +77,6 @@ angular.module('oscarchavezBlog').factory('posts', ['$http', '$resource', functi
       comment.upvotes += 1;
     });
 	};
-
+  
   return o;
 }])

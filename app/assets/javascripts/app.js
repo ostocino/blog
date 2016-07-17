@@ -1,33 +1,51 @@
-angular.module('oscarchavezBlog', ['ui.router', 'templates', 'Devise', 'ngFileUpload', 'ngResource', 'hc.marked', 'angulike']).config([
-'$stateProvider',
-'$urlRouterProvider',
-function($stateProvider, $urlRouterProvider) {
+angular.module('oscarchavezBlog', ['ui.router', 'templates', 'Devise', 'ngFileUpload', 'ngResource', 'hc.marked', 'angulike', 'ui.router.metatags'])
 
-  $stateProvider
+.config(['$stateProvider','$urlRouterProvider','UIRouterMetatagsProvider',
+  function($stateProvider, $urlRouterProvider, UIRouterMetatagsProvider) {
 
+    //State Provider
+    $stateProvider
     .state('home', {
       url: '/home',
       templateUrl: 'home/_home.html',
       controller: 'MainCtrl',
       resolve: {
         postPromise: ['posts',
-          function(posts){
-            return posts.getAll();
+        function(posts){
+          return posts.getAll();
         }]
-		  }
+      },
+      metaTags: {
+        title: 'oscarchavez.me',
+        description: 'Blog | oscarchavez.me',
+        keywords: 'oscar, chavez, oscarchavez, vr, ar, mxvr, entrepreneur, mexico, virtual reality, augmented reality',
+        properties: {
+          'og:title': 'oscarchavez blog'
+        }
+      }
     }).state('about', {
       url: '/about',
       templateUrl: 'about/_about.html',
       controller: 'MainCtrl'
     })
-		.state('posts', {
-		  url: '/posts/{id}',
-		  templateUrl: 'posts/_posts.html',
-		  controller: 'PostsCtrl',
+    .state('posts', {
+      url: '/posts/{id}',
+      templateUrl: 'posts/_posts.html',
+      controller: 'PostsCtrl',
       resolve: {
         post: ['$stateParams', 'posts', function($stateParams, posts) {
+          console.log(posts.get($stateParams.id));
           return posts.get($stateParams.id);
         }]
+      },
+      metaTags: {
+        /*title: post.title,
+        description: post.excerpt,
+        properties: {
+          'og:title' : post.title,
+          'og:description' : post.description,
+          'og:image' : post.image,
+        }*/
       }
     })
     .state('new', {
@@ -36,21 +54,21 @@ function($stateProvider, $urlRouterProvider) {
       controller: 'MainCtrl',
       resolve: {
         postPromise: ['posts',
-          function(posts){
-            return posts.getAll();
+        function(posts){
+          return posts.getAll();
         }]
       }
     })
     .state('edit', {
-        url: '/posts/{id}/edit',
-        templateUrl: 'posts/_edit.html',
-        controller: 'PostsCtrl',
-        resolve: {
-          post: ['$stateParams', 'posts', function($stateParams, posts) {
-            return posts.get($stateParams.id);
-          }]
-        }
-      })
+      url: '/posts/{id}/edit',
+      templateUrl: 'posts/_edit.html',
+      controller: 'PostsCtrl',
+      resolve: {
+        post: ['$stateParams', 'posts', function($stateParams, posts) {
+          return posts.get($stateParams.id);
+        }]
+      }
+    })
     .state('login', {
       url: '/login',
       templateUrl: 'auth/_login.html',
@@ -59,7 +77,11 @@ function($stateProvider, $urlRouterProvider) {
         Auth.currentUser().then(function (){
           $state.go('home');
         })
-      }]
+      }],
+      metaTags: {
+        title: 'Login | oscarchavez.me',
+        description: 'Login for contributors and admin'
+      }
     })
     .state('register', {
       url: '/register',
@@ -69,23 +91,36 @@ function($stateProvider, $urlRouterProvider) {
         Auth.currentUser().then(function (){
           $state.go('home');
         })
-      }]
+      }],
+      metaTags: {
+        title: 'Register | oscarchavez.me',
+        description: 'Register a new user, for contributors and admin'
+      }
     });
 
-  $urlRouterProvider.otherwise('home');
-}])
+    //UrlRouteProvider
+    $urlRouterProvider.otherwise('home');
 
-//Marked Provider, for directive 'marked'
-.config(['markedProvider', function(markedProvider){
-  markedProvider.setOptions({
-    gfm: true,
-    tables: true,
-    highlight: function(code, lang){
-      if(lang){
-        return hljs.highlight(lang, code, true).value;
-      } else{
-        return hljs.highlightAuto(code).value;
-      }
-    }
-  });
+    //MetaTags Provider
+    UIRouterMetatagsProvider
+    .setTitlePrefix('oscarchavez -  ')
+    .setTitleSuffix(' | oscarchavez')
+    .setDefaultTitle('oscarchavez | angular, rails, unity, vr-ar, entreprenurship | @ostocino')
+    .setDefaultDescription('fullstack development, graphics and virtual reality, entreprenurship, personal blog of oscarchavez. @ostocino')
+    .setDefaultKeywords('ullstack, rails, ruby, angular, bootstrap, vr, ar, development, programming, entrepreneurship, traveling, virtual reality, augmented reality, computer graphics')
+    .setStaticProperties({
+        'og:site_name' : 'oscarchavez.me',
+      })
+    .setOGURL(true);
+
+  }])
+
+
+.run(['$rootScope', 'MetaTags', 
+  function ($rootScope, MetaTags){
+
+    $rootScope.MetaTags = MetaTags;
+
 }]);
+
+

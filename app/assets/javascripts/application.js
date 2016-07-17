@@ -14,4 +14,5 @@
 //= require angular-resource
 //= require angulike
 //= require marked
+//= require ui-router-metatags
 //= require_tree .

@@ -22,7 +22,9 @@ class PostsController < ApplicationController
   end
 
   def update
-   respond_with Post.update(params[:id], params[:post])
+    @post = Post.find(params[:id])
+    @post.update(post_params)
+    respond_with @post
   end
 
   def destroy

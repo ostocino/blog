@@ -7,9 +7,11 @@ function($scope, $location, posts){
 	$location.path();
 
 	//Filter by category
-	$scope.dev = true;
-	$scope.vrar = true;
+	$scope.desarrollo = true;
+	$scope.vr = true;
+	$scope.ar = true;
 	$scope.blog = true;
+	$scope.mxvr = true;
 
 
 	$scope.addPost = function(){
@@ -67,5 +69,6 @@ function($scope, $location, posts){
 			file.progress = Math.min(100, parseInt(100.0 * evt.loaded/evt.total));
 		});
 	};
+	
 
 }]);

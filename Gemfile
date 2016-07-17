@@ -20,6 +20,7 @@ gem 'therubyracer'
 gem 'pg'
 gem 'font-awesome-sass'
 gem 'frontend-generators'
+gem 'prerender_rails'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

@@ -2,26 +2,19 @@
 <html>
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
-  <title>oscarchavez | rails, angular, vr, ar, entrepreneurship, blog</title>
+  <title ng-bind="MetaTags.title">oscarchavez | rails, angular, vr, ar, entrepreneurship, blog</title>
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= favicon_link_tag 'favicon.ico'%>
   <%= csrf_meta_tags %>
 
   <link rel="canonical" href="http://www.oscarchavez.me">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="keywords" content="fullstack, rails, ruby, angular, bootstrap, vr, ar, development, programming, entrepreneurship, traveling, virtual reality, augmented reality, computer graphics" >
-  <meta name="description" content="fullstack development, graphics and virtual reality, entreprenurship, personal blog of oscarchavez. @ostocino">
+  <meta name="description" content="{{MetaTags.description}}">
+  <meta name="keywords" content="{{MetaTags.keywords}}">
+  <meta ng-repeat="(key, value) in MetaTags.properties" property="{{key}}" content="{{value}}" >
+  <meta name="prerender-status-code" content="{{MetaTags.prerender.statusCode}}">
+  <meta name="prerender-header" ng-if="MetaTags.prerender.header" content="{{MetaTags.prerender.header}}">
 
-    <!--FACEBOOK-->
-  <meta property="og:title" content="oscarchavez" >
-  <meta property="og:site_name" content="oscarchavez">
-  <meta property="og:url" content="http://www.oscarchavez.me" >
-  <meta property="og:description" content="fullstack development, graphics and virtual reality, entreprenurship, personal blog of oscarchavez. @ostocino" >
-  <meta property="og:image" content="http://www.vectorthree.com/oscarchavez/img/baner_oscarchavez.png" >
-
-  <meta property="og:type" content="website" >
-  <meta property="og:locale" content="en_US" >
 
 </head>
 <body ng-app="oscarchavezBlog">

@@ -4,13 +4,11 @@
       <br>
       <img class="img-responsive center" src="{{post.image_url}}" alt="">
 
-      
-
       <h2>
         <a href="{{post.link}}">{{post.title}}</a>
       </h2>
       <p>
-        <span ng-show="post.upvotes > 0"><strong>{{post.upvotes}} likes</strong> |</span> por <a href="#/users/{{post.user.username}}">{{post.user.username}}</a> | {{post.category}}
+        <div ng-show="post.upvotes > 0"><strong>{{post.upvotes}} likes</strong> |</div> por <a href="#/users/{{post.user.username}}">{{post.user.username}}</a> <div ng-show="post.category">| {{post.category}}</div>
       </p>
       <p class="text-muted"><span class="fa fa-clock-o"></span> Posteado {{post.created_at | date: 'd MMM, yyyy h:mm'}}</p>
 
@@ -27,7 +25,7 @@
       <div marked="postBody"></div>
 
       <br>
-      <a class="btn btn-info" ng-click="incrementUpvotes(post)"><span class="fa fa-thumbs-o-up"></span>&nbsp;&nbsp;Like</a>
+      <a class="btn btn-info" ng-click="incrementPostUpvotes(post)"><span class="fa fa-thumbs-o-up"></span>&nbsp;&nbsp;Like</a>
       <a class="btn btn-warning" href="#/posts/{{post.id}}/edit"><i class="fa fa-pencil"></i>&nbsp;&nbsp;Editar Post</a>
       <a class="btn btn-danger" ng-click="deletePost(post)"><i class="fa fa-trash"></i>&nbsp;&nbsp;Borrar Post</a>
        <hr>

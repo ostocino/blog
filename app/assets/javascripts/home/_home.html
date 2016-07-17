@@ -11,10 +11,13 @@
     <div class="mbl pbm">
       <ul class="nav nav-pills">
         <li ng-class="{'active': desarrollo}">
-          <a ng-click="dev = !dev" ng-model="category.dev">Desarrollo</a>
+          <a ng-click="desarrollo = !desarrollo" ng-model="category.desarrollo">Desarrollo</a>
         </li>
-        <li ng-class="{'active': vrar}">
-          <a ng-click="vrar = !vrar" ng-model="category.vrar">VR/AR</a>
+        <li ng-class="{'active': vr}">
+          <a ng-click="vr = !vr" ng-model="category.vr">VR</a>
+        </li >
+         <li ng-class="{'active': ar}">
+          <a ng-click="ar = !ar" ng-model="category.ar">AR</a>
         </li >
         <li ng-class="{'active': blog}">
           <a ng-click="blog = !blog" ng-model="category.blog">Blog</a>
@@ -90,7 +93,7 @@
           <div class="col-lg-6">
             <div ng-repeat="post in posts | limitTo: 5">
               <p>
-                <a href="{{post.link}}">{{post.title}} | {{post.upvotes}} likes | {{post.comments}}</a>
+                <a href="{{post.link}}">{{post.title}} | {{post.upvotes}} likes | comments</a>
               </p>
             </div>
           </div>
