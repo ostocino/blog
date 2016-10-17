@@ -4,21 +4,38 @@ class PostsController < ApplicationController
   respond_to :json
 
   def index
-    respond_with Post.all
+    @posts = Post.all
+  end
+
+  def new
+    @post = Post.new(post_params.merge(user_id: current_user.id))
   end
 
   def create
-    respond_with Post.create(post_params.merge(user_id: current_user.id))
+    @post = Post.new(post_params.merge(user_id: current_user.id))
+    @post.upvotes = 0
+    if @post.save
+      redirect_to @post
+    else
+      render 'new'
+    end
   end
 
   def show
-    respond_with Post.find(params[:id])
+    @posts = Post.all
+    @post = Post.find(params[:id])
+    @comments = @post.comments.all
   end
 
   def upvote
     @post = Post.find(params[:id])
     @post.increment!(:upvotes)
     respond_with @post
+  end
+
+  def edit
+    @post = Post.find(params[:id])
+    render 'edit'
   end
 
   def update
@@ -30,11 +47,11 @@ class PostsController < ApplicationController
   def destroy
      @post = Post.find(params[:id])
      @post.delete
-     render json: Post.all
+     redirect_to root_path
   end
 
   private
   def post_params
-    params.permit(:title, :link, :body, :excerpt, :category)
+    params.permit(:title, :body, :excerpt, :category)
   end
 end

@@ -1,0 +1,37 @@
+<!-- Blog Sidebar Widgets Column -->
+<div class="sidebar">
+  
+  <!-- Blog Search Well -->
+  <div class="well">
+    <h4>search <%= emojify(":mag:") %></h4>
+    <div class="input-group">
+      <input type="text" class="form-control">
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button">
+          <span class="glyphicon glyphicon-search"></span>
+        </button>
+      </span>
+    </div>
+    <!-- /.input-group -->
+  </div>
+
+  <!-- Popular Posts Well -->
+  <div class="well">
+    <h4>popular <%= emojify(":star:") %></h4>
+    <div class="row">
+      <div class="col-sm-6">
+        <% @posts.order(:upvotes).limit(3).each do |post| %>
+          <%= link_to("#{post.upvotes} #{post.title}", post, :class => "small") %>
+        <% end  %>
+      </div>
+      <!-- /.col-lg-6 -->
+    </div>
+    <!-- /.row -->
+  </div>
+
+  <!-- Side Widget Well -->
+  <div class="well">
+    <a class="twitter-timeline" href="https://twitter.com/ostocino" data-widget-id="694431438804901888"> </a>
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+  </div>
+</div>

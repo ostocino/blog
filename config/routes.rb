@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
 
-  devise_for :users
-  root 'application#angular'
+  devise_for :users, :path => '', :path_names => {:sign_in => 'login', :sign_out => 'logout', :sign_up => 'register', :edit => 'profile'},
+              :controllers => {:omniauth_callbacks => "omniauth_callbacks"}
+  
+  get 'pages/about'
+
+  get 'posts/new' => 'posts#new'
+
+  root 'posts#index'
 
   resources :posts, only: [:create, :index, :show, :destroy, :edit, :update] do
     resources :comments, only: [:show, :create, :destroy, :edit, :update] do

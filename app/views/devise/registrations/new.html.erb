@@ -1,0 +1,43 @@
+<div class="row">
+  <div class="center">
+    <div class="col-md-12 center-inner">
+      <%= emojify(":point_left:")%> <%= link_to("back to posts", root_path) %>
+
+
+      <h4>register  <%= emojify(":stuck_out_tongue_winking_eye:") %> </h4>
+
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= devise_error_messages! %>
+
+        <div class="form-group">
+          <%= f.label :email %><br />
+          <%= f.email_field :email, :name =>"email" ,autofocus: true, :class => "form-control"%>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :username %><br />
+          <%= f.text_field :username, :name =>"username", :class => "form-control"%>
+        </div>
+
+        <br>
+        <div class="form-group">
+          <%= f.label :password %>
+          <% if @validatable %>
+          <p class="text-muted">(<%= @minimum_password_length %> characters minimum)</p>
+          <% end %>
+          <%= f.password_field :password, autocomplete: "off", :class => "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :password_confirmation %><br />
+          <%= f.password_field :password_confirmation, autocomplete: "off", :class => "form-control" %>
+        </div>
+
+        <div  class="form-group">
+          <%= f.submit "register", :class=> "btn btn-hg btn-primary pull-right" %>
+          <%= render "devise/shared/links" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

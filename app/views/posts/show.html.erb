@@ -1,0 +1,89 @@
+<div class="row">
+  <div class="col-md-12">
+      <!--Image-->
+      <!--img class="img-responsive center" src="{{post.image_url}}" alt=""-->
+      <%= emojify(":point_left:")%> <%= link_to("back to posts", root_path) %>
+
+      <h3>
+        <%= @post.title %>
+      </h3>
+      
+      <p>
+      <% if @post.upvotes > 0 %>
+        <p><strong><%= @post.upvotes %> likes</strong> | by post.author | <%= @post.category %></p>
+      <% else %>
+        by post.author | <%= @post.category %></p>
+      <% end %>
+      </p>
+
+      <p class="text-muted small" style="margin-top: -10px;"> posted <%= time_ago_in_words(@post.created_at) %> ago (<%= @post.created_at.strftime("%b %d, %Y @ %H:%m") %>) </p>
+      <hr>
+      
+      <div>
+        <%= markdown(@post.body) %>
+      </div>
+
+      <ul class="list-unstyled">
+
+        <li class="btn btn-info">
+          <%= emojify(":thumbsup:") %>
+          <%= link_to "like", 
+          upvote_post_path(@post),
+          method: :put,
+          style: "color: white;"%>
+        </li>
+
+        <li class="btn btn-warning">
+          <%= emojify(":pencil2:") %>
+          <%= link_to "edit", 
+          edit_post_path(@post),
+          style: "color: white;"%>
+        </li>
+
+        <li class="btn btn-danger">
+          <%= emojify(":x:") %>
+          <%= link_to "delete", 
+          @post,
+          style: "color: white;"%>
+        </li>
+      </ul>  
+      <hr>
+
+      <h3>comments</h3>
+
+      <% if @comments.length > 0 %>
+        <% @comments.each do |comment| %>
+          <p><%= link_to comment, comment %>: <%= comment.body %> <a class="text-info"><span class="glyphicon glyphicon-thumbs-up"></span> like</a></p>
+        <% end %>
+      <% else %>  
+        <p>no comments yet. be the first one ! <%= emojify(":star:") %></p>
+      <% end %>
+
+          <!--span style="font-size:20px;"><a href="{{post.user.username}}">{{comment.user.username}}</a> :</span>
+
+          <span style="font-size:20px; margin-left:10px;">{{comment.body}}</span>
+
+          <a ng-click="incrementUpvotes(comment)" class="text-info"> {{comment.upvotes}} &nbsp;&nbsp;</a>
+
+          <a ng-click="deleteComment(comment)" class="text-danger"> Delete&nbsp;&nbsp;</a>
+
+          <a ng-click="replyComment(comment)" class="text-primary"> Reply&nbsp;&nbsp; </a-->
+
+      <hr>
+      <form style="margin-top:20px;">
+      <h5>comment here <%= emojify(":point_down:") %></h5>
+      <div class="form-group">
+        <textarea
+        class="form-control"
+        name="body"
+        rows="7"
+        placeholder="Comentario"
+        ng-model="body">
+        </textarea>
+      </div>
+      <button type="submit" class="btn btn-primary"><%= emojify(":ok_hand:") %> send</button>
+      </form>
+      <br>
+  </div>
+</div>
+

@@ -18,14 +18,31 @@
 @import "font-awesome-sprockets";
 @import "font-awesome";
 
+.center{
+  display: flex;
+  justify-content: center;
+}
+.center-inner{
+  width: 50%;
+  margin: 0 auto;
+}
+
 .home
 {
   padding-top: 50px;
 }
 
+.content{
+  padding-top: -30px;
+}
+
 .sidebar
 {
-  padding-top: 40px;
+  padding-top: 50px;
+}
+
+.post-link{
+  color: white;
 }
 
 .footer {

@@ -1,4 +1,5 @@
 //= require jquery
+//= require jquery_ujs
 //= require jquery-ui/button
 //= require jquery-ui/datepicker
 //= require jquery-ui/slider
@@ -15,4 +16,5 @@
 //= require angulike
 //= require marked
 //= require ui-router-metatags
+//= require rails-timeago
 //= require_tree .

@@ -1,28 +1,30 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
-  <title ng-bind="MetaTags.title">oscarchavez | rails, angular, vr, ar, entrepreneurship, blog</title>
-  <%= stylesheet_link_tag    'application', media: 'all' %>
-  <%= javascript_include_tag 'application' %>
-  <%= favicon_link_tag 'favicon.ico'%>
-  <%= csrf_meta_tags %>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
+    <title ng-bind="MetaTags.title">oscarchavez | rails, angular, react, vr, ar, entrepreneurship, blog</title>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+    <%= favicon_link_tag 'favicon.ico'%>
+    <%= csrf_meta_tags %>
 
-  <link rel="canonical" href="http://www.oscarchavez.me">
-  <meta name="description" content="{{MetaTags.description}}">
-  <meta name="keywords" content="{{MetaTags.keywords}}">
-  <meta ng-repeat="(key, value) in MetaTags.properties" property="{{key}}" content="{{value}}" >
-  <meta name="prerender-status-code" content="{{MetaTags.prerender.statusCode}}">
-  <meta name="prerender-header" ng-if="MetaTags.prerender.header" content="{{MetaTags.prerender.header}}">
-
-
-</head>
-<body ng-app="oscarchavezBlog">
-  <div ng-include="'nav/_nav.html'"></div>
-  <div class="container home">
-    <ui-view></ui-view>
-  </div>
-  <div ng-include="'nav/_footer.html'"></div>
-</body>
-
+    <link rel="canonical" href="http://www.oscarchavez.me">
+    <meta name="description" content="{{MetaTags.description}}">
+    <meta name="keywords" content="{{MetaTags.keywords}}">
+    <meta ng-repeat="(key, value) in MetaTags.properties" property="{{key}}" content="{{value}}" >
+    <meta name="prerender-status-code" content="{{MetaTags.prerender.statusCode}}">
+    <meta name="prerender-header" ng-if="MetaTags.prerender.header" content="{{MetaTags.prerender.header}}">
+  </head>
+  <body>
+    <%= render partial: "partials/header" %>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 home">
+          <%= render partial: "partials/messages" %>
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+    <%= render partial: "partials/footer" %>
+  </body>
 </html>

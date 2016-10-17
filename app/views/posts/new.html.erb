@@ -1,0 +1,62 @@
+<!--div class="well well-lg button" style="height: 140px;" ngf-select="uploadFile($file)">
+  <h4>File</h4>
+  <small ng-hide="f.progress >= 1">Upload new photo (Click here)</small>
+  <small ng-show="f.progress == 100"> Photo uploaded / Photo téléchargée (Click here to upload another</small>
+  <div class="progress" ng-show="f.progress >= 0 || f.progress <= 99">
+    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: {{f.progress}}%">
+      <span class="sr-only" ng-bind="f.progress + '%'">{{f.progress}}</span>
+    </div>
+  </div>
+</div-->
+
+<%= form_for @post, url: {action: "create"} do |p| %>
+  <h3><%= emojify(":tada:") %> new post <%= emojify(":tada:") %></h3>
+
+  <div class="row">
+    <div class="col-md-4">
+      <div class="form-group">
+        <label>title*</label>
+        <%= p.text_field :title, :name => "title", :class => "form-control" %>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="form-group">
+        <label>main image (optional)</label>
+        <div class="fileinput fileinput-new" data-provides="fileinput">
+          <div class="input-group">
+            <div class="form-control uneditable-input" data-trigger="fileinput">
+              <span class="fui-clip fileinput-exists"></span>
+              <span class="fileinput-filename"></span>
+            </div>
+            <span class="input-group-btn btn-file">
+              <span class="btn btn-default fileinput-new" data-role="select-file">Select file</span>
+              <span class="btn btn-default fileinput-exists" data-role="change"><span class="fui-gear"></span>&nbsp;&nbsp;Change</span>
+              <input type="file" name="...">
+              <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput"><span class="fui-trash"></span>&nbsp;&nbsp;Remove</a>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <label>category*</label>
+      <%= p.select :category, options_for_select([["development", 0], ["vr/ar", 1], ["blog", 2], ["mxvr", 3]]), {}, {:class=> "form-control"} %>
+    </div>
+  </div>
+
+   <div class="form-group">
+    <label>excerpt* (use markdown)</label>
+    <%= p.text_field :excerpt, :name => "excerpt", :class => "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <label>body* (use markdown)</label>
+    <%= p.text_area :body, :name => "body", size: "60x15", :class => "form-control" %>
+  </div>
+
+
+  <div class="form-group">
+    <%= p.submit("send", :class=> "btn btn-hg btn-primary pull-right") %>
+  </div>
+
+<% end %>

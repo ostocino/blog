@@ -16,7 +16,6 @@
 !/log/.keep
 /tmp
 
-
-# Vendor & Publi Assets
+# Vendor & Public Assets
 vendor/assets
-#public/assets
+public/assets

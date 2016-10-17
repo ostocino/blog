@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="col-md-12">
+      <!--Image-->
+      <!--img class="img-responsive center" src="{{post.image_url}}" alt=""-->
+      <%= emojify(":point_left:")%> <%= link_to("back to posts", root_path) %>
+
+      <hr>
+      <form style="margin-top:20px;">
+      <h5>comment here <%= emojify(":point_down:") %></h5>
+      <div class="form-group">
+        <textarea
+        class="form-control"
+        name="body"
+        rows="7"
+        placeholder="Comentario"
+        ng-model="body">
+        </textarea>
+      </div>
+      <button type="submit" class="btn btn-primary"><%= emojify(":ok_hand:") %> send</button>
+      </form>
+      <br>
+
+      <ul>
+        <li><a href="http://facebook.com/oscarchavezromero"><i class="glyphicon glyphicon-facebook"></i>Facebook</a></li>
+        <li><a href="http://twitter.com/ostocino"><i class="glyphicon glyphicon-twitter"></i>Twitter</a></li>
+        <li><a href="http://github.com/ostocino"><i class="glyphicon glyphicon-ostocino"></i>Github</a></li>
+      </ul>
+  </div>
+</div>
+
