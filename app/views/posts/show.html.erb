@@ -10,7 +10,7 @@
       
       <p>
       <% if @post.upvotes > 0 %>
-        <p><strong><%= @post.upvotes %> likes</strong> | by post.author | <%= @post.category %></p>
+        <p><strong><%= @post.upvotes %> likes</strong> | by <%=link_to @user.username, edit_user_registration_path(@user) %> | <%= @post.category %></p>
       <% else %>
         by post.author | <%= @post.category %></p>
       <% end %>
@@ -42,9 +42,10 @@
 
         <li class="btn btn-danger">
           <%= emojify(":x:") %>
-          <%= link_to "delete", 
-          @post,
-          style: "color: white;"%>
+          <%= link_to 'delete', post_path(@post), 
+          method: :delete, 
+          data: {confirm: 'are you sure?'}, 
+          style: "color: white;" %>
         </li>
       </ul>  
       <hr>

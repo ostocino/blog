@@ -19,7 +19,7 @@
     <!--Blog Post ERB-->
     <% @posts.each do |post| %>
     <h4><%= link_to(post.title, post) %></h4>
-    <p> by <%= post.user_id %>| <%= link_to(post.category, post.category) %> | <%= post.upvotes %> likes </p>
+    <p> by <%= link_to post.user_id %>| <%= post.category %> | <%= post.upvotes %> likes </p>
     <p class="text-muted small" style="margin-top: -10px;"> posted <%= time_ago_in_words(post.created_at) %> ago (<%= post.created_at.strftime("%b %d, %Y @ %H:%m") %>) </p>
     <p> <%= post.excerpt %> ... </p>
 
@@ -47,7 +47,10 @@
 
       <li class="btn btn-danger">
         <%= emojify(":x:") %>
-        <%= link_to "delete", post, :method=> "delete", data: {confirm: "are you sure?"}, style: "color: white;"%>
+        <%= link_to 'delete', post_path(post), 
+        method: :delete, 
+        data: {confirm: 'are you sure?'}, 
+        style: "color: white;" %>
       </li>
     </ul>
     <% end %>

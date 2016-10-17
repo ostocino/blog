@@ -14,10 +14,16 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="oscarchavezNav">
                 <ul class="nav navbar-nav navbar-right">
-                  <li><%= link_to("about", pages_about_path, :class => "navbar-brand") %></li>
-                  <li><%= link_to("register", new_user_registration_path, :class => "navbar-brand") %></li>
-                  <li><%= link_to("login", new_user_session_path , :class => "navbar-brand") %></li>
-                  <li> <%= link_to("new post", posts_new_path, :class => "btn btn-primary") %></li>
+                  <li><%= link_to("about", about_path, :class => "navbar-brand") %></li>
+                  <% if !user_signed_in? %>
+                    <li><%= link_to("register", new_user_registration_path, :class => "navbar-brand")%></li>
+                    <li><%= link_to("login", new_user_session_path , :class => "navbar-brand") %></li>
+                    
+                  <% else %>
+                    <li><%= link_to(current_user.username, edit_user_registration_path) %></li>
+                    <li><%= link_to("new post", posts_new_path, :class => "btn btn-primary") %></li>
+
+                  <% end %>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
