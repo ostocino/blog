@@ -8,8 +8,6 @@ class CreateComments < ActiveRecord::Migration
       t.timestamps null: false
     end
 
-    remove_foreign_key :comments, :posts
-
     add_foreign_key :comments, :posts, on_delete: :cascade
   end
 end

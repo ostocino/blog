@@ -1,6 +1,6 @@
   <!-- Blog Entries Column -->
   <div class="col-sm-8 content">
-    <ul class="nav nav-pills">
+    <ul class="nav nav-pills nav-justified">
       <li>
         <a><%= emojify(":zap:") %> development</a>
       </li>
@@ -19,8 +19,10 @@
     <!--Blog Post ERB-->
     <% @posts.each do |post| %>
     <h4><%= link_to(post.title, post) %></h4>
-    <p> by <%= link_to post.user_id %>| <%= post.category %> | <%= post.upvotes %> likes </p>
-    <p class="text-muted small" style="margin-top: -10px;"> posted <%= time_ago_in_words(post.created_at) %> ago (<%= post.created_at.strftime("%b %d, %Y @ %H:%m") %>) </p>
+    <div class="list-inline">
+      <p> by <%= link_to post.user_id %> | <%= post.category %> | <%= post.upvotes %> likes </p>
+      <p class="text-muted small" style="margin-top: -10px;"> posted <%= time_ago_in_words(post.created_at) %> ago (<%= post.created_at.strftime("%b %d, %Y @ %H:%m") %>) </p>
+    </div>
     <p> <%= post.excerpt %> ... </p>
 
     <ul class="list-unstyled">
