@@ -1,3 +1,16 @@
+<head>
+  <% title @post.title %>
+  <% meta_tag :description, @post.excerpt %>
+  <% meta_tag :author, userIdToUsername(@post.user_id) %>
+
+  og_title(@post.title)
+  og_type("article")
+  og_url(@post.url)
+  og_image(@post.image_url)
+  og_site_name("oscarchavez.me")
+  og_description(@post.excerpt)
+  
+</head>
 <div class="row">
   <div class="col-md-12">
       <!--Image-->
