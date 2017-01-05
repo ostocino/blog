@@ -35,10 +35,10 @@
       <% end %>
       <% if user_signed_in? %>
         <% if post.user_id == 1 %>
-          <p> by<%= link_to userIdToUsername(post.user_id), edit_user_registration_path(post.user_id) %> | <strong><%= post.upvotes %></strong> likes | <%= post.category %> | <small class="text-muted"> posted <%= time_ago_in_words(post.created_at) %> ago (<%= post.created_at.strftime("%b %d, %Y @ %H:%m") %>) </small></p>
+          <p> by <%= link_to userIdToUsername(post.user_id), edit_user_registration_path(post.user_id) %> | <strong><%= post.upvotes %></strong> <%= emojify(":thumbsup:") %> | <strong> <%= post.comments.count %> </strong> <%= emojify(":speech_balloon:") %> | <%= post.category %> | <small class="text-muted"> posted <%= time_ago_in_words(post.created_at) %> ago (<%= post.created_at.strftime("%b %d, %Y @ %H:%m") %>) </small></p>
         <% end %>
       <% else %>
-        <p> by <strong><%= userIdToUsername(post.user_id)%></strong> | <strong><%= post.upvotes %></strong> likes | <%= post.category %> | <small class="text-muted"> posted <%= time_ago_in_words(post.created_at) %> ago (<%= post.created_at.strftime("%b %d, %Y @ %H:%m") %>) </small></p>
+        <p> by <strong><%= userIdToUsername(post.user_id)%></strong> | <strong><%= post.upvotes %></strong> <%= emojify(":thumbsup:") %> | <strong> <%= post.comments.count %> </strong> <%= emojify(":speech_balloon:") %> | <%= post.category %> | <small class="text-muted"> posted <%= time_ago_in_words(post.created_at) %> ago (<%= post.created_at.strftime("%b %d, %Y @ %H:%m") %>) </small></p>
       <% end %>      
       <strong><em> <%= post.excerpt %> ... </em></strong>
       <br>

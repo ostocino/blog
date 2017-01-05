@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
   respond_to :html, :json
 
   def create
-    @post = Post.find(params[:post_id])
+    @post = Post.friendly.find(params[:post_id])
     comment = @post.comments.create(comment_params.merge(user_id: current_user.id))
     comment.upvotes = 0
     if comment.save
@@ -14,14 +14,14 @@ class CommentsController < ApplicationController
   end
 
   def upvote
-    @post = Post.find(params[:post_id])
+    @post = Post.friendly.find(params[:post_id])
     @comment = @post.comments.find(params[:id])
     @comment.increment!(:upvotes)
     redirect_to @post
   end
 
   def destroy
-    @post = Post.find(params[:post_id])
+    @post = Post.friendly.find(params[:post_id])
     @comment = @post.comments.find(params[:id])
     @comment.delete
     redirect_to @post

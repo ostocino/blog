@@ -5,7 +5,7 @@
       <%= emojify(":point_left:")%> <%= link_to("back to posts", root_path) %>
 
       <h3><%= @post.title %></h3>
-      <p>by <%=link_to @user.username, edit_user_registration_path(@user) %> | <strong><%= @post.upvotes %></strong> likes | <%= @post.category %> | <small class="text-muted">posted <%= time_ago_in_words(@post.created_at) %> ago (<%= @post.created_at.strftime("%b %d, %Y @ %H:%m") %>)</small></p>
+      <p>by <%=link_to @user.username, edit_user_registration_path(@user) %> | <strong><%= @post.upvotes %></strong> <%= emojify(":thumbsup:") %> | <strong> <%= @post.comments.count %> </strong> <%= emojify(":speech_balloon:") %> | <%= @post.category %> | <small class="text-muted">posted <%= time_ago_in_words(@post.created_at) %> ago (<%= @post.created_at.strftime("%b %d, %Y @ %H:%m") %>)</small></p>
       <% if @post.image_url? %>
         <%= image_tag @post.image_url, :class => "img-rounded img-responsive" %>
       <% end %>
@@ -63,8 +63,10 @@
             | <%= comment.upvotes %>
             <%= emojify(":thumbsup:")%>
             <%= link_to("like", upvote_post_comment_path(@post.id, comment.id), :class => "btn-primary btn-sm", :method => :put)%>
-            <% if comment.user_id == current_user.id %>
-              <%= link_to("delete", post_comment_path(@post.id, comment.id), :class => "btn-danger btn-sm", :method => :delete)%>
+            <% if user_signed_in? %>
+              <% if comment.user_id == current_user.id %>
+                <%= link_to("delete", post_comment_path(@post.id, comment.id), :class => "btn-danger btn-sm", :method => :delete)%>
+              <% end %>
             <% end %>
           </p>
         <% end %>

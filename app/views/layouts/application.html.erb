@@ -2,18 +2,15 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
-    <title ng-bind="MetaTags.title">oscarchavez | rails, angular, react, vr, ar, entrepreneurship, blog</title>
+    <title ng-bind="MetaTags.title">oscarchavez | RoR, Unity3D, VR, AR, Bitcoin, Startups, Personal Blog</title>
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
     <%= favicon_link_tag 'favicon.ico'%>
     <%= csrf_meta_tags %>
 
     <link rel="canonical" href="http://www.oscarchavez.me">
-    <meta name="description" content="{{MetaTags.description}}">
-    <meta name="keywords" content="{{MetaTags.keywords}}">
-    <meta ng-repeat="(key, value) in MetaTags.properties" property="{{key}}" content="{{value}}" >
-    <meta name="prerender-status-code" content="{{MetaTags.prerender.statusCode}}">
-    <meta name="prerender-header" ng-if="MetaTags.prerender.header" content="{{MetaTags.prerender.header}}">
+    <meta name="description" content="a (personal) blog about fullstack webdev, vr/ar development, entrepreneurshit and travelling. ">
+    <meta name="keywords" content="RoR, Unity3D, VR, AR, Bitcoin, Startups">
   </head>
   <body>
     <%= render partial: "partials/header" %>

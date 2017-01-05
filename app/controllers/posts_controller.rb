@@ -29,31 +29,31 @@ class PostsController < ApplicationController
 
   def show
     @posts = Post.all
-    @post = Post.find(params[:id])
+    @post = Post.friendly.find(params[:id])
     @comments = @post.comments.all
     @comment = Comment.new
     @user = User.find(@post.user_id)
   end
 
   def upvote
-    @post = Post.find(params[:id])
+    @post = Post.friendly.find(params[:id])
     @post.increment!(:upvotes)
     redirect_to @post
   end
 
   def edit
-    @post = Post.find(params[:id])
+    @post = Post.friendly.find(params[:id])
     render 'edit'
   end
 
   def update
-    @post = Post.find(params[:id])
+    @post = Post.friendly.find(params[:id])
     @post.update(post_params)
     redirect_to @post
   end
 
   def destroy
-     @post = Post.find(params[:id])
+     @post = Post.friendly.find(params[:id])
      @post.delete
      redirect_to root_path
   end
