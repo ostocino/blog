@@ -17,11 +17,12 @@
       <!--img class="img-responsive center" src="{{post.image_url}}" alt=""-->
       <%= emojify(":point_left:")%> <%= link_to("back to posts", root_path) %>
 
-      <h3><%= @post.title %></h3>
-      <p>by <%=link_to @user.username, edit_user_registration_path(@user) %> | <strong><%= @post.upvotes %></strong> <%= emojify(":thumbsup:") %> | <strong> <%= @post.comments.count %> </strong> <%= emojify(":speech_balloon:") %> | <%= @post.category %> | <small class="text-muted">posted <%= time_ago_in_words(@post.created_at) %> ago (<%= @post.created_at.strftime("%b %d, %Y @ %H:%m") %>)</small></p>
       <% if @post.image_url? %>
         <%= image_tag @post.image_url, :class => "img-rounded img-responsive" %>
       <% end %>
+      
+      <h3><%= @post.title %></h3>
+      <p>by <%=link_to @user.username, edit_user_registration_path(@user) %> | <strong><%= @post.upvotes %></strong> <%= emojify(":thumbsup:") %> | <strong> <%= @post.comments.count %> </strong> <%= emojify(":speech_balloon:") %> | <%= @post.category %> | <small class="text-muted">posted <%= time_ago_in_words(@post.created_at) %> ago (<%= @post.created_at.strftime("%b %d, %Y @ %H:%m") %>)</small></p>
       <hr>
       <div>
         <%= markdown(@post.body) %>
