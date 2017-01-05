@@ -18,6 +18,11 @@
 @import "font-awesome-sprockets";
 @import "font-awesome";
 
+img {
+  max-width: 100% !important;
+  border: 20px !important;
+} 
+
 .center{
   display: flex;
   justify-content: center;
@@ -53,6 +58,7 @@
   height: 50px;
   //background-color: #f5f5f5;
 }
+
 
 .container .text-muted {
   margin: 20px 0;
