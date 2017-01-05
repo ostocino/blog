@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
   get 'posts/new' => 'posts#new'
 
+  get '/logout', to: 'devise/sessions#destroy'
+
   root 'posts#index'
 
   resources :posts, only: [:create, :index, :show, :destroy, :edit, :update] do
