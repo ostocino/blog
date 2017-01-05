@@ -30,8 +30,9 @@ class PostsController < ApplicationController
   def show
     @posts = Post.all
     @post = Post.find(params[:id])
-    @user = User.find(@post.user_id)
     @comments = @post.comments.all
+    @comment = Comment.new
+    @user = User.find(@post.user_id)
   end
 
   def upvote

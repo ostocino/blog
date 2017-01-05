@@ -18,72 +18,66 @@
       </li>
     </ul>
 
+    <% if user_signed_in? %>
+      <hr>
+      <h5>Blog Tools</h5>
+      <%= link_to("new post", posts_new_path, :class => "btn btn-lg btn-info") %>
+      <hr>
+    <% end %>
     <br>
     <!--Blog Post ERB-->
     <% @posts.order("created_at desc").each do |post| %>
-    
-    <h4><%= link_to(post.title, post) %></h4>
-
-    <p> by <%= link_to userIdToUsername(post.user_id) %> | <strong><%= post.upvotes %></strong> likes | <%= post.category %> | <small class="text-muted"> posted <%= time_ago_in_words(post.created_at) %> ago (<%= post.created_at.strftime("%b %d, %Y @ %H:%m") %>) </small></p>
-    <strong><em> <%= post.excerpt %> ... </em></strong>
-    <br>
-    <br>
-    <ul class="list-unstyled">
-      <li class="btn btn-primary">
-        <%= link_to "read more", 
-        post, 
-        style: "color: white;"%>
-      </li>
-
-      <li class="btn btn-info">
-        <%= emojify(":thumbsup:") %>
-        <%= link_to "like", 
-        upvote_post_path(post),
-        method: :put,
-        style: "color: white;"%>
-      </li>
-
-      <% if post.user_id == 1 %>
-        <hr>
-        <li class="btn btn-warning">
-          <%= emojify(":pencil2:") %>
-          <%= link_to "edit", 
-          edit_post_path(post),
+      <h4><%= link_to(post.title, post) %></h4>
+      <% if post.image_url? %>
+        <%= link_to post do %>
+          <%= image_tag post.image_url, :class => "img-rounded img-responsive" %>
+        <% end %>
+      <% end %>
+      <% if user_signed_in? %>
+        <% if post.user_id == 1 %>
+          <p> by<%= link_to userIdToUsername(post.user_id), edit_user_registration_path(post.user_id) %> | <strong><%= post.upvotes %></strong> likes | <%= post.category %> | <small class="text-muted"> posted <%= time_ago_in_words(post.created_at) %> ago (<%= post.created_at.strftime("%b %d, %Y @ %H:%m") %>) </small></p>
+        <% end %>
+      <% else %>
+        <p> by <strong><%= userIdToUsername(post.user_id)%></strong> | <strong><%= post.upvotes %></strong> likes | <%= post.category %> | <small class="text-muted"> posted <%= time_ago_in_words(post.created_at) %> ago (<%= post.created_at.strftime("%b %d, %Y @ %H:%m") %>) </small></p>
+      <% end %>      
+      <strong><em> <%= post.excerpt %> ... </em></strong>
+      <br>
+      <ul class="list-unstyled">
+        <li class="btn btn-primary">
+          <%= emojify(":monkey:") %>
+          <%= link_to "read more", 
+          post, 
           style: "color: white;"%>
         </li>
 
-        <li class="btn btn-danger">
-          <%= emojify(":x:") %>
-          <%= link_to 'delete', post_path(post), 
-          method: :delete, 
-          data: {confirm: 'are you sure?'}, 
-          style: "color: white;" %>
+        <li class="btn btn-info">
+          <%= emojify(":thumbsup:") %>
+          <%= link_to "like", 
+          upvote_post_path(post),
+          method: :put,
+          style: "color: white;"%>
         </li>
-      <% else %>
-      <% end %>
-    </ul>
+
+        <% if user_signed_in? %>
+          <% if post.user_id == 1 %>
+            <li class="btn btn-warning">
+              <%= emojify(":pencil2:") %>
+              <%= link_to "edit", 
+              edit_post_path(post),
+              style: "color: white;"%>
+            </li>
+
+            <li class="btn btn-danger">
+              <%= emojify(":x:") %>
+              <%= link_to 'delete', post_path(post), 
+              method: :delete, 
+              data: {confirm: 'are you sure?'}, 
+              style: "color: white;" %>
+          <% end %>
+        <% end %>
+      </ul>
+      <hr>
     <% end %>
-
-    <!-- Blog Post -->
-    <!--div>
-      <h3>
-        <a href="#/posts/{{post.id}}">{{post.title}}</a>
-      </h3>
-      <p>
-        por <a href="#/users/{{post.user.username}}">{{post.user.username}}</a> | {{post.category}} | <span ng-show="post.upvotes > 0"><strong>{{post.upvotes}} likes</strong></span>
-      </p>
-      <p class="text-muted"><span class="fa fa-clock-o"></span> Posteado {{post.created_at | date: 'd MMM, yyyy h:mm'}}</p>
-
-      <p ng-show="post.excerpt">{{post.excerpt}}...</p>
-
-      <a class="btn btn-primary" href="#/posts/{{post.id}}">Leer más&nbsp;&nbsp;<span class="fa fa-chevron-right"></span></a>
-
-      <a class="btn btn-info" ng-click="incrementUpvotes(post)"><span class="fa fa-thumbs-o-up"></span>&nbsp;&nbsp;Like</a>
-
-      <a ng-show="post.user.username == 'os'" class="btn btn-warning" href="#/posts/{{post.id}}/edit"><i class="fa fa-pencil"></i>&nbsp;&nbsp;Editar Post</a>
-
-      <a ng-show="post.user.username == 'os'" class="btn btn-danger" ng-click="deletePost(post)"><i class="fa fa-trash"></i>&nbsp;&nbsp;Borrar Post</a>  
-    </div-->
 
     <!-- Pager -->
     <!--hr>

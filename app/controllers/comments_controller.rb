@@ -5,27 +5,32 @@ class CommentsController < ApplicationController
   def create
     @post = Post.find(params[:post_id])
     comment = @post.comments.create(comment_params.merge(user_id: current_user.id))
-    respond_with @post, comment
+    comment.upvotes = 0
+    if comment.save
+      redirect_to @post
+    else
+      render :new
+    end
   end
 
   def upvote
     @post = Post.find(params[:post_id])
     @comment = @post.comments.find(params[:id])
     @comment.increment!(:upvotes)
-    respond_with @post, @comment
+    redirect_to @post
   end
 
   def destroy
     @post = Post.find(params[:post_id])
     @comment = @post.comments.find(params[:id])
     @comment.delete
-    render @post
+    redirect_to @post
   end
   
 
   private
   def comment_params
-    params.require(:comment).permit(:body)
+    params.permit(:body)
   end
 
 end

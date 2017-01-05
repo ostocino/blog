@@ -6,7 +6,9 @@
 
       <h3><%= @post.title %></h3>
       <p>by <%=link_to @user.username, edit_user_registration_path(@user) %> | <strong><%= @post.upvotes %></strong> likes | <%= @post.category %> | <small class="text-muted">posted <%= time_ago_in_words(@post.created_at) %> ago (<%= @post.created_at.strftime("%b %d, %Y @ %H:%m") %>)</small></p>
-
+      <% if @post.image_url? %>
+        <%= image_tag @post.image_url, :class => "img-rounded img-responsive" %>
+      <% end %>
       <hr>
       <div>
         <%= markdown(@post.body) %>
@@ -23,21 +25,23 @@
           style: "color: white;"%>
         </li>
 
-        <% if @post.user_id == 1 %>
-          <li class="btn btn-warning">
-            <%= emojify(":pencil2:") %>
-            <%= link_to "edit", 
-            edit_post_path(@post),
-            style: "color: white;"%>
-          </li>
+        <% if user_signed_in? %>
+          <% if @post.user_id == 1 %>
+            <li class="btn btn-warning">
+              <%= emojify(":pencil2:") %>
+              <%= link_to "edit", 
+              edit_post_path(@post),
+              style: "color: white;"%>
+            </li>
 
-          <li class="btn btn-danger">
-            <%= emojify(":x:") %>
-            <%= link_to 'delete', post_path(@post), 
-            method: :delete, 
-            data: {confirm: 'are you sure?'}, 
-            style: "color: white;" %>
-          </li>
+            <li class="btn btn-danger">
+              <%= emojify(":x:") %>
+              <%= link_to 'delete', post_path(@post), 
+              method: :delete, 
+              data: {confirm: 'are you sure?'}, 
+              style: "color: white;" %>
+            </li>
+          <% end %>
         <% end %>
       </ul>  
       <hr>
@@ -45,8 +49,24 @@
       <h3>comments</h3>
 
       <% if @comments.length > 0 %>
-        <% @comments.each do |comment| %>
-          <p><%= link_to comment, comment %>: <%= comment.body %> <a class="text-info"><span class="glyphicon glyphicon-thumbs-up"></span> like</a></p>
+        <% @comments.order("upvotes desc").each do |comment| %>
+          <p>
+            <% if user_signed_in? %>
+              <% if @post.user_id == 1 %>
+                <strong><%= link_to userIdToUsername(comment.user_id), edit_user_registration_path(comment.user_id) %></strong>:
+              <% end %>
+            <% else %>
+              <strong><%= userIdToUsername(comment.user_id) %></strong>:
+            <% end %> 
+            
+            <i><%= comment.body %></i>
+            | <%= comment.upvotes %>
+            <%= emojify(":thumbsup:")%>
+            <%= link_to("like", upvote_post_comment_path(@post.id, comment.id), :class => "btn-primary btn-sm", :method => :put)%>
+            <% if comment.user_id == current_user.id %>
+              <%= link_to("delete", post_comment_path(@post.id, comment.id), :class => "btn-danger btn-sm", :method => :delete)%>
+            <% end %>
+          </p>
         <% end %>
       <% else %>  
         <p>no comments yet. be the first one ! <%= emojify(":star:") %></p>
@@ -61,20 +81,14 @@
           <a ng-click="deleteComment(comment)" class="text-danger"> Delete&nbsp;&nbsp;</a>
 
           <a ng-click="replyComment(comment)" class="text-primary"> Reply&nbsp;&nbsp; </a-->
-
-      <form style="margin-top:20px;">
-      <h5>comment here <%= emojify(":point_down:") %></h5>
-      <div class="form-group">
-        <textarea
-        class="form-control"
-        name="body"
-        rows="7"
-        placeholder="comment"
-        ng-model="body">
-        </textarea>
-      </div>
-      <button type="submit" class="btn btn-primary"><%= emojify(":ok_hand:") %> send</button>
-      </form>
+        <!--form style="margin-top:20px;"-->
+        <%= form_for [@post, @comment] do |f| %>
+          <h5>comment here <%= emojify(":point_down:") %></h5>
+          <div class="form-group">
+            <%= f.text_area :body, :name => "body" , rows: "8" , class: "form-control" %>
+          </div>
+          <%= f.submit "send", :class => "btn btn-lg btn-primary" %>
+        <% end %>
       <br>
   </div>
 </div>

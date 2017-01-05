@@ -21,7 +21,7 @@
                     
                   <% else %>
                     <li><%= link_to(current_user.username, edit_user_registration_path) %></li>
-                    <li><%= link_to("new post", posts_new_path, :class => "btn btn-primary") %></li>
+                    <li><%= link_to("logout", destroy_user_session_path, :method => :delete) %></li>
 
                   <% end %>
                 </ul>
