@@ -4,7 +4,13 @@ class PostsController < ApplicationController
   respond_to :json
 
   def index
-    @posts = Post.all
+    @altPosts = Post.all
+
+    if params[:category]
+      @posts = Post.where(:category => params[:category])
+    else
+      @posts = Post.all
+    end
   end
 
   def new
@@ -31,7 +37,7 @@ class PostsController < ApplicationController
   def upvote
     @post = Post.find(params[:id])
     @post.increment!(:upvotes)
-    respond_with @post
+    redirect_to @post
   end
 
   def edit
@@ -42,7 +48,7 @@ class PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     @post.update(post_params)
-    respond_with @post
+    redirect_to @post
   end
 
   def destroy

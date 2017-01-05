@@ -2,29 +2,32 @@
   <div class="col-sm-8 content">
     <ul class="nav nav-pills nav-justified">
       <li>
-        <a><%= emojify(":zap:") %> development</a>
+        <!--%= emojify(":zap:") %-->
+        <%= link_to "development", posts_path(:category => "dev") %>
       </li>
       <li>
-        <a><%= emojify(":eyes:") %> vr/ar</a>
+        <!--a><%= emojify(":eyes:") %> vr/ar</a-->
+        <%= link_to "vr/ar", posts_path(:category => "vr-ar") %>
       </li>
       <li>
-        <a><%= emojify(":newspaper:") %> blog</a>
+        <!--a><%= emojify(":newspaper:") %> blog</a-->
+        <%= link_to "blog", posts_path(:category => "blog") %>
       </li>
       <li>
-        <a><%= emojify(":space_invader:") %> mxvr</a>
+        <%= link_to "all", root_path %>
       </li>
     </ul>
 
     <br>
     <!--Blog Post ERB-->
-    <% @posts.each do |post| %>
+    <% @posts.order("created_at desc").each do |post| %>
+    
     <h4><%= link_to(post.title, post) %></h4>
-    <div class="list-inline">
-      <p> by <%= link_to post.user_id %> | <%= post.category %> | <%= post.upvotes %> likes </p>
-      <p class="text-muted small" style="margin-top: -10px;"> posted <%= time_ago_in_words(post.created_at) %> ago (<%= post.created_at.strftime("%b %d, %Y @ %H:%m") %>) </p>
-    </div>
-    <p> <%= post.excerpt %> ... </p>
 
+    <p> by <%= link_to userIdToUsername(post.user_id) %> | <strong><%= post.upvotes %></strong> likes | <%= post.category %> | <small class="text-muted"> posted <%= time_ago_in_words(post.created_at) %> ago (<%= post.created_at.strftime("%b %d, %Y @ %H:%m") %>) </small></p>
+    <strong><em> <%= post.excerpt %> ... </em></strong>
+    <br>
+    <br>
     <ul class="list-unstyled">
       <li class="btn btn-primary">
         <%= link_to "read more", 
@@ -40,20 +43,24 @@
         style: "color: white;"%>
       </li>
 
-      <li class="btn btn-warning">
-        <%= emojify(":pencil2:") %>
-        <%= link_to "edit", 
-        edit_post_path(post),
-        style: "color: white;"%>
-      </li>
+      <% if post.user_id == 1 %>
+        <hr>
+        <li class="btn btn-warning">
+          <%= emojify(":pencil2:") %>
+          <%= link_to "edit", 
+          edit_post_path(post),
+          style: "color: white;"%>
+        </li>
 
-      <li class="btn btn-danger">
-        <%= emojify(":x:") %>
-        <%= link_to 'delete', post_path(post), 
-        method: :delete, 
-        data: {confirm: 'are you sure?'}, 
-        style: "color: white;" %>
-      </li>
+        <li class="btn btn-danger">
+          <%= emojify(":x:") %>
+          <%= link_to 'delete', post_path(post), 
+          method: :delete, 
+          data: {confirm: 'are you sure?'}, 
+          style: "color: white;" %>
+        </li>
+      <% else %>
+      <% end %>
     </ul>
     <% end %>
 
@@ -79,7 +86,7 @@
     </div-->
 
     <!-- Pager -->
-    <hr>
+    <!--hr>
     <ul class="pager">
       <li class="previous">
         <a href="#">&larr; older</a>
@@ -87,7 +94,7 @@
       <li class="next">
         <a href="#">newer &rarr;</a>
       </li>
-    </ul>
+    </ul-->
   </div>
 
    <!-- Blog Sidebar Widgets Column -->
@@ -110,10 +117,13 @@
     <div class="well">
       <h4>popular <%= emojify(":star:") %></h4>
       <div class="row">
-        <div class="col-sm-6">
-          <% @posts.order(:upvotes).limit(3).each do |post| %>
-            <%= link_to("#{post.upvotes} #{post.title}", post, :class => "small") %>
-          <% end  %>
+        <div class="col-md-6">
+        <% @altPosts.order("upvotes desc").limit(3).each do |post| %>
+          <%= link_to post do %>
+            <p><%= post.upvotes %> <%= emojify(":thumbsup:") %> - <%= post.title %></p>
+          <% end %>
+        <% end %>
+
         </div>
         <!-- /.col-lg-6 -->
       </div>

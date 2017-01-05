@@ -40,7 +40,7 @@
     </div>
     <div class="col-md-4">
       <label>category*</label>
-      <%= p.select :category, options_for_select([["development", 0], ["vr/ar", 1], ["blog", 2], ["mxvr", 3]]), {}, {:class=> "form-control"} %>
+      <%= p.select :category, options_for_select([["development", "dev"], ["vr/ar", "vr-ar"], ["blog", "blog"]]), {}, {:class=> "form-control", :name => "category"} %>
     </div>
   </div>
 

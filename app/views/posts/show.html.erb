@@ -4,24 +4,14 @@
       <!--img class="img-responsive center" src="{{post.image_url}}" alt=""-->
       <%= emojify(":point_left:")%> <%= link_to("back to posts", root_path) %>
 
-      <h3>
-        <%= @post.title %>
-      </h3>
-      
-      <p>
-      <% if @post.upvotes > 0 %>
-        <p><strong><%= @post.upvotes %> likes</strong> | by <%=link_to @user.username, edit_user_registration_path(@user) %> | <%= @post.category %></p>
-      <% else %>
-        by post.author | <%= @post.category %></p>
-      <% end %>
-      </p>
+      <h3><%= @post.title %></h3>
+      <p>by <%=link_to @user.username, edit_user_registration_path(@user) %> | <strong><%= @post.upvotes %></strong> likes | <%= @post.category %> | <small class="text-muted">posted <%= time_ago_in_words(@post.created_at) %> ago (<%= @post.created_at.strftime("%b %d, %Y @ %H:%m") %>)</small></p>
 
-      <p class="text-muted small" style="margin-top: -10px;"> posted <%= time_ago_in_words(@post.created_at) %> ago (<%= @post.created_at.strftime("%b %d, %Y @ %H:%m") %>) </p>
       <hr>
-      
       <div>
         <%= markdown(@post.body) %>
       </div>
+      <hr>
 
       <ul class="list-unstyled">
 
@@ -33,20 +23,22 @@
           style: "color: white;"%>
         </li>
 
-        <li class="btn btn-warning">
-          <%= emojify(":pencil2:") %>
-          <%= link_to "edit", 
-          edit_post_path(@post),
-          style: "color: white;"%>
-        </li>
+        <% if @post.user_id == 1 %>
+          <li class="btn btn-warning">
+            <%= emojify(":pencil2:") %>
+            <%= link_to "edit", 
+            edit_post_path(@post),
+            style: "color: white;"%>
+          </li>
 
-        <li class="btn btn-danger">
-          <%= emojify(":x:") %>
-          <%= link_to 'delete', post_path(@post), 
-          method: :delete, 
-          data: {confirm: 'are you sure?'}, 
-          style: "color: white;" %>
-        </li>
+          <li class="btn btn-danger">
+            <%= emojify(":x:") %>
+            <%= link_to 'delete', post_path(@post), 
+            method: :delete, 
+            data: {confirm: 'are you sure?'}, 
+            style: "color: white;" %>
+          </li>
+        <% end %>
       </ul>  
       <hr>
 
@@ -70,7 +62,6 @@
 
           <a ng-click="replyComment(comment)" class="text-primary"> Reply&nbsp;&nbsp; </a-->
 
-      <hr>
       <form style="margin-top:20px;">
       <h5>comment here <%= emojify(":point_down:") %></h5>
       <div class="form-group">
@@ -78,7 +69,7 @@
         class="form-control"
         name="body"
         rows="7"
-        placeholder="Comentario"
+        placeholder="comment"
         ng-model="body">
         </textarea>
       </div>
