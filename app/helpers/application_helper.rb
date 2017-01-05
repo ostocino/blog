@@ -35,6 +35,10 @@ module ApplicationHelper
     content_for :title, text
   end
 
+  def description(text)
+    content_for :description, text
+  end
+
   def meta_tag(tag, text)
     content_for :"meta_#{tag}", text
   end

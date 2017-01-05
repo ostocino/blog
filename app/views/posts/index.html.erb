@@ -24,7 +24,6 @@
       <%= link_to("new post", posts_new_path, :class => "btn btn-lg btn-info") %>
       <hr>
     <% end %>
-    <br>
     <!--Blog Post ERB-->
     <% @posts.order("created_at desc").each do |post| %>
       <h4><%= link_to(post.title, post) %></h4>

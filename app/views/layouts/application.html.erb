@@ -1,24 +1,26 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:og="http://ogp.me/ns#"
+      xmlns:fb="http://www.facebook.com/2008/fbml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
     
-    <!--title>oscarchavez | RoR, Unity3D, VR, AR, Bitcoin, Startups, Personal Blog</title-->
-    <title>
-      oscarchavez | RoR, Unity3D, VR, AR, Bitcoin, Startups, Personal Blog
-    </title>
-
-    <!--meta name="description" content="<%= yield_meta_tag(:description, 'a (personal) blog about fullstack webdev, vr/ar development, entrepreneurshit and travelling') %>"--> 
+    <title>oscarchavez | <%= if content_for?(:title) then yield(:title) else "RoR, Unity3D, VR, AR, Bitcoin, Startups" end%></title>
+    <meta name="description" content="<%= yield_meta_tag(:description, 'a (personal) blog about fullstack webdev, vr/ar development, entrepreneurshit and travelling') %>"> 
     <meta name="keywords" content="<%= yield_meta_tag(:keywords, 'RoR, Unity3D, VR, AR, Bitcoin, Startups') %>">
     <% meta_tag :author, "oscarchavez" %>
 
     <!--OG Protocol-->
-    <!--meta property="og:title" content="oscarchavez | RoR, Unity3D, VR, AR, Bitcoin, Startups, Personal Blog"-->
+    <% og_type("article") %>
+    <% og_image("http://vectorthree.com/ocr/oscarchavez/cover.jpg") %>
+    <% og_site_name("oscarchavez.me") %>
+
+    <!--meta property="og:title" content="oscarchavez | RoR, Unity3D, VR, AR, Bitcoin, Startups, Personal Blog">
     <meta property="og:type" content="website">
     <meta property="og:url" content="http://oscarchavez.me">
-    <meta property="og:image" content="http://vectorthree.com/ocr/oscarchavez/cover.jpg">
+    <meta property="og:image" content="http://vectorthree.com/ocr/oscarchavez/cover.jpg"-->
 
-    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
     <%= favicon_link_tag 'favicon.ico'%>
     <%= csrf_meta_tags %>

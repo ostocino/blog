@@ -1,6 +1,7 @@
 <head>
   <% title @post.title %>
   <% meta_tag :description, @post.excerpt %>
+  <% meta_tag :keywords, @post.keywords %>
   <% meta_tag :author, userIdToUsername(@post.user_id) %>
 
   <% og_title(@post.title) %>
