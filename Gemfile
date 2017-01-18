@@ -31,7 +31,6 @@ gem 'friendly_id', '~> 5.1'
 gem 'meta-tags'
 gem 'open_graph_helper'
 
-
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

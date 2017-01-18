@@ -11,5 +11,8 @@ class Post < ActiveRecord::Base
     super(options.merge(include: [:user, comments: {include: :user}]))
   end
 
+  def self.search(search)
+  	where("title LIKE ? or excerpt LIKE ? or body LIKE ?", "%#{search}%", "%#{search}%", "%#{search}%")
+  end
   
 end

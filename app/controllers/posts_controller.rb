@@ -4,13 +4,20 @@ class PostsController < ApplicationController
   respond_to :json
 
   def index
-    @altPosts = Post.all
+    @popular_posts = Post.all
 
     if params[:category]
       @posts = Post.where(:category => params[:category])
     else
       @posts = Post.all
     end
+
+    if params[:search]
+      @posts = Post.search(params[:search]).order("created_at DESC")
+    else
+      @posts = Post.all.order("created_at DESC")
+    end
+
   end
 
   def new

@@ -19,3 +19,4 @@
 # Vendor & Public Assets
 vendor/assets
 public/assets
+.DS_Store
