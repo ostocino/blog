@@ -1,6 +1,6 @@
 <div class="row">
   <div class="center">
-    <div class="col-md12 center-inner">
+    <div class="col-md-12 center-inner">
       <%= emojify(":point_left:")%> <%= link_to("back to posts", root_path) %>
 
       <h4>login <%= emojify(":stuck_out_tongue_winking_eye:") %> </h4>
@@ -9,7 +9,7 @@
         
         <div class="form-group">
           <%= f.label :email %><br />
-          <%= f.email_field :email, autofocus: true, :class => "form-control" %>
+          <%= f.email_field :email, autofocus: true, :class => "form-control", placeholder: "email" %>
         </div>
 
         <div class="form-group">

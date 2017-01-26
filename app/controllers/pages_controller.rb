@@ -5,6 +5,8 @@ class PagesController < ApplicationController
   protect_from_forgery with: :exception
   respond_to :json
 
+	before_filter :authenticate_user!, :except => [:about]
+
   def about
   end
 
