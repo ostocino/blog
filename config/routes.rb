@@ -7,6 +7,10 @@ Rails.application.routes.draw do
 
   get 'posts/new' => 'posts#new'
 
+  devise_scope :user do
+    get '/logout',  :to => 'sessions#destroy'
+  end
+
   root 'posts#index'
 
   resources :posts, only: [:create, :index, :show, :destroy, :edit, :update] do
