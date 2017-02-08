@@ -1,28 +1,35 @@
 <head>
-  <% title @post.title %>
-  <% meta_tag :description, @post.excerpt %>
-  <% meta_tag :keywords, @post.keywords %>
-  <% meta_tag :author, userIdToUsername(@post.user_id) %>
 
-  <% og_title(@post.title) %>
-  <% og_type("article") %>
-  <% og_image(@post.image_url) %>
-  <% og_site_name("oscarchavez.me") %>
-  <% og_description(@post.excerpt) %>
-
+<% set_meta_tags title: @post.title,
+                 description: @post.excerpt,
+                 keywords: @post.keywords,
+                 og: {
+                    title: @post.title,
+                    type: 'website',
+                    url: @post.post_url,
+                    image: @post.image_url,
+                  },
+                  twitter: {
+                    card: 'summary_large_image',
+                    site: '@ostocino',
+                    creator: @user.username,
+                    title: @post.title,
+                    description: @post.excerpt,
+                    image: @post.image_url
+                  } %>
 </head>
 <div class="row">
   <div class="col-md-12">
       <!--Image-->
       <!--img class="img-responsive center" src="{{post.image_url}}" alt=""-->
-      <%= emojify(":point_left:")%> <%= link_to("back to posts", root_path) %>
+      <%= emojify(":point_left:")%> <%= link_to("regresar", root_path) %>
 
       <% if @post.image_url? %>
         <%= image_tag @post.image_url, :class => "img-rounded img-responsive" %>
       <% end %>
       
       <h3><%= @post.title %></h3>
-      <p>by <%=link_to @user.username, edit_user_registration_path(@user) %> | <strong><%= @post.upvotes %></strong> <%= emojify(":thumbsup:") %> | <strong> <%= @post.comments.count %> </strong> <%= emojify(":speech_balloon:") %> | <%= @post.category %> | <small class="text-muted">posted <%= time_ago_in_words(@post.created_at) %> ago (<%= @post.created_at.strftime("%b %d, %Y @ %H:%m") %>)</small></p>
+      <p>por <%=link_to @user.username, edit_user_registration_path(@user) %> | <strong><%= @post.upvotes %></strong> <%= emojify(":thumbsup:") %> | <strong> <%= @post.comments.count %> </strong> <%= emojify(":speech_balloon:") %> | <%= @post.category %> | <small class="text-muted">posted <%= time_ago_in_words(@post.created_at) %> ago (<%= @post.created_at.strftime("%b %d, %Y @ %H:%m") %>)</small></p>
       <hr>
       <div>
         <%= markdown(@post.body) %>
@@ -33,7 +40,7 @@
 
         <li class="btn btn-info">
           <%= emojify(":thumbsup:") %>
-          <%= link_to "like", 
+          <%= link_to "me gusta", 
           upvote_post_path(@post),
           method: :put,
           style: "color: white;"%>
@@ -43,16 +50,16 @@
           <% if @post.user_id == 1 %>
             <li class="btn btn-warning">
               <%= emojify(":pencil2:") %>
-              <%= link_to "edit", 
+              <%= link_to "editar", 
               edit_post_path(@post),
               style: "color: white;"%>
             </li>
 
             <li class="btn btn-danger">
               <%= emojify(":x:") %>
-              <%= link_to 'delete', post_path(@post), 
+              <%= link_to 'eliminar', post_path(@post), 
               method: :delete, 
-              data: {confirm: 'are you sure?'}, 
+              data: {confirm: 'estás seguro?'}, 
               style: "color: white;" %>
             </li>
           <% end %>
@@ -60,7 +67,7 @@
       </ul>  
       <hr>
 
-      <h3>comments</h3>
+      <h3>comentarios</h3>
 
       <% if @comments.length > 0 %>
         <% @comments.order("upvotes desc").each do |comment| %>
@@ -76,16 +83,16 @@
             <i><%= comment.body %></i>
             | <%= comment.upvotes %>
             <%= emojify(":thumbsup:")%>
-            <%= link_to("like", upvote_post_comment_path(@post.id, comment.id), :class => "btn-primary btn-sm", :method => :put)%>
+            <%= link_to("me gusta", upvote_post_comment_path(@post.id, comment.id), :class => "btn-primary btn-sm", :method => :put)%>
             <% if user_signed_in? %>
               <% if comment.user_id == current_user.id %>
-                <%= link_to("delete", post_comment_path(@post.id, comment.id), :class => "btn-danger btn-sm", :method => :delete)%>
+                <%= link_to("eliminar", post_comment_path(@post.id, comment.id), :class => "btn-danger btn-sm", :method => :delete)%>
               <% end %>
             <% end %>
           </p>
         <% end %>
       <% else %>  
-        <p>no comments yet. be the first one ! <%= emojify(":star:") %></p>
+        <p>no hay comentarios. Sé el primero ! <%= emojify(":star:") %></p>
       <% end %>
 
           <!--span style="font-size:20px;"><a href="{{post.user.username}}">{{comment.user.username}}</a> :</span>
@@ -99,7 +106,7 @@
           <a ng-click="replyComment(comment)" class="text-primary"> Reply&nbsp;&nbsp; </a-->
         <!--form style="margin-top:20px;"-->
         <%= form_for [@post, @comment] do |f| %>
-          <h5>comment here <%= emojify(":point_down:") %></h5>
+          <h5>comenta aqui <%= emojify(":point_down:") %></h5>
           <div class="form-group">
             <%= f.text_area :body, :name => "body" , rows: "8" , class: "form-control" %>
           </div>

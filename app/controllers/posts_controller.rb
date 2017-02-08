@@ -4,13 +4,13 @@ class PostsController < ApplicationController
   respond_to :json
 
   def index
-    @popular_posts = Post.all
+    @popular_posts = Post.all.order("upvotes DESC")
 
     if params[:category]
       @posts = Post.where(:category => params[:category])
     else
       @posts = Post.all
-    end
+    endº
 
     if params[:search]
       @posts = Post.search(params[:search]).order("created_at DESC")
@@ -27,6 +27,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params.merge(user_id: current_user.id))
     @post.upvotes = 0
+    #@post.post_url = Post.friendly.find(params[@post.id])
     if @post.save
       redirect_to @post
     else
@@ -67,6 +68,6 @@ class PostsController < ApplicationController
 
   private
   def post_params
-    params.permit(:title, :body, :excerpt, :category)
+    params.permit(:title, :body, :excerpt, :category, :post_url, :image_url)
   end
 end

@@ -3,7 +3,7 @@
     <ul class="nav nav-pills nav-justified">
       <li>
         <!--%= emojify(":zap:") %-->
-        <%= link_to "development", posts_path(:category => "dev") %>
+        <%= link_to "desarrollo", posts_path(:category => "dev") %>
       </li>
       <li>
         <!--a><%= emojify(":eyes:") %> vr/ar</a-->
@@ -14,14 +14,14 @@
         <%= link_to "blog", posts_path(:category => "blog") %>
       </li>
       <li>
-        <%= link_to "all", root_path %>
+        <%= link_to "todo", root_path %>
       </li>
     </ul>
 
     <% if user_signed_in? %>
       <hr>
       <h5>Blog Tools</h5>
-      <%= link_to("new post", posts_new_path, :class => "btn btn-lg btn-info") %>
+      <%= link_to("nuevo post", posts_new_path, :class => "btn btn-lg btn-info") %>
       <hr>
     <% end %>
     <!--Blog Post ERB-->
@@ -44,14 +44,14 @@
       <ul class="list-unstyled">
         <li class="btn btn-primary">
           <%= emojify(":monkey:") %>
-          <%= link_to "read more", 
+          <%= link_to "leer más", 
           post, 
           style: "color: white;"%>
         </li>
 
         <li class="btn btn-info">
           <%= emojify(":thumbsup:") %>
-          <%= link_to "like", 
+          <%= link_to "me gusta", 
           upvote_post_path(post),
           method: :put,
           style: "color: white;"%>
@@ -61,16 +61,16 @@
           <% if post.user_id == 1 %>
             <li class="btn btn-warning">
               <%= emojify(":pencil2:") %>
-              <%= link_to "edit", 
+              <%= link_to "editar", 
               edit_post_path(post),
               style: "color: white;"%>
             </li>
 
             <li class="btn btn-danger">
               <%= emojify(":x:") %>
-              <%= link_to 'delete', post_path(post), 
+              <%= link_to 'eliminar', post_path(post), 
               method: :delete, 
-              data: {confirm: 'are you sure?'}, 
+              data: {confirm: 'estás seguro?'}, 
               style: "color: white;" %>
           <% end %>
         <% end %>
@@ -102,7 +102,7 @@
   <div class="col-sm-4">
     <!-- Blog Search Well -->
     <div class="well">
-      <h4>search <%= emojify(":mag:") %></h4>
+      <h4>buscar <%= emojify(":mag:") %></h4>
 
       <%= form_tag(posts_path, :method => "get", id: "search-form") do %>
         <div class="input-group">
@@ -120,7 +120,7 @@
     <!-- Popular Posts Well -->
     <div class="well">
       <h4>popular <%= emojify(":star:") %></h4>
-        <% @popular_posts.order("upvotes asc").limit(5).each do |post| %>
+        <% @popular_posts.limit(5).each do |post| %>
           <% if post.upvotes? %>
             <%= link_to post do %>
               <p><%= post.upvotes %> <%= emojify(":thumbsup:") %> - <%= post.title %></p>

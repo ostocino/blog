@@ -8,21 +8,21 @@ class CommentsController < ApplicationController
     comment.upvotes = 0
     if comment.save
       redirect_to @post
-    else
+    else 
       render :new
     end
   end
 
   def upvote
     @post = Post.friendly.find(params[:post_id])
-    @comment = @post.comments.friendly.find(params[:id])
+    @comment = @post.comments.find(params[:id])
     @comment.increment!(:upvotes)
     redirect_to @post
   end
 
   def destroy
     @post = Post.friendly.find(params[:post_id])
-    @comment = @post.comments.friendly.find(params[:id])
+    @comment = @post.comments.find(params[:id])
     @comment.delete
     redirect_to @post
   end

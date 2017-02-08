@@ -4,8 +4,10 @@ class Post < ActiveRecord::Base
 
 	friendly_id :title, use: :slugged
 	
-	has_many :comments
+	has_many :comments, :upvotes
 	belongs_to :user
+
+
   
   def as_json(options = {})
     super(options.merge(include: [:user, comments: {include: :user}]))

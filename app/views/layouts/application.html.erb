@@ -8,25 +8,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
     
-    <title>oscarchavez | <%= if content_for?(:title) then yield(:title) else "RoR, Unity3D, VR, AR, Bitcoin, Startups" end%></title>
-    <meta name="description" content="<%= yield_meta_tag(:description, 'a (personal) blog about fullstack webdev, vr/ar development, entrepreneurshit and travelling') %>"> 
-    <meta name="keywords" content="<%= yield_meta_tag(:keywords, 'RoR, Unity3D, VR, AR, Bitcoin, Startups') %>">
-    <% meta_tag :author, "oscarchavez" %>
-
-    <!--OG Protocol-->
-    <% og_type("article") %>
-    <% og_description("a (personal) blog about fullstack webdev, vr/ar development, entrepreneurshit and travelling") %>
-    <% og_site_name("oscarchavez.me") %>
-    <% og_image("http://vectorthree.com/ocr/oscarchavez/img/mexico.jpg") %>
+    <%= display_meta_tags separator: "&#124".html_safe, 
+                          title: 'Inicio',
+                          site: 'oscarchavez.me',
+                          description: 'un blog personal de desarrollo web, VR/AR, emprendimiento, viajes y demás encuentros.',
+                          keywords: 'RoR, Unity3D, VR, AR, Bitcoin, Startups',
+                          og: {
+                            title: 'oscarchavez.me',
+                            type: 'website',
+                            url: 'http://www.oscarchavez.me',
+                            image: 'http://www.vectorthree.com/ocr/oscarchavez/img/oscar.jpg',
+                            },
+                          twitter: {
+                            card: 'summary',
+                            site: '@ostocino',
+                            title: 'oscarchavez.me',
+                            description: 'un blog personal de desarrollo web, VR/AR, emprendimiento, viajes y demás encuentros.',
+                            image: 'http://www.vectorthree.com/ocr/oscarchavez/img/oscar.jpg'
+                            } %>
 
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
     <%= favicon_link_tag 'favicon.ico'%>
     <%= csrf_meta_tags %>
 
-    <link rel="canonical" href="http://www.oscarchavez.me">
-    <!--meta name="description" content="a (personal) blog about fullstack webdev, vr/ar development, entrepreneurshit and travelling. ">
-    <meta name="keywords" content="RoR, Unity3D, VR, AR, Bitcoin, Startups"-->
+
   </head>
   <body>
   <style>
