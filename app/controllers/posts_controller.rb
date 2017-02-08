@@ -27,7 +27,6 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params.merge(user_id: current_user.id))
     @post.upvotes = 0
-    #@post.post_url = Post.friendly.find(params[@post.id])
     if @post.save
       redirect_to @post
     else
@@ -68,6 +67,6 @@ class PostsController < ApplicationController
 
   private
   def post_params
-    params.permit(:title, :body, :excerpt, :category, :post_url, :image_url)
+    params.permit(:title, :body, :excerpt, :category)
   end
 end
