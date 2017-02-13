@@ -7,9 +7,7 @@ Rails.application.routes.draw do
 
   get 'posts/new' => 'posts#new'
 
-  devise_scope :user do
-    get '/logout',  :to => 'sessions#destroy'
-  end
+  get '/logout', => 'sessions#destroy'
 
   root 'posts#index'
 
