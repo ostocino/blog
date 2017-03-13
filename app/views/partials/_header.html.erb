@@ -21,7 +21,7 @@
                     
                   <% else %>
                     <li><%= link_to current_user.username, edit_user_registration_path %></li>
-                    <li><%= link_to('salir', destroy_user_session_path, :method => :delete)  %></li>
+                    <li><%= link_to 'salir', destroy_user_session_path %></li>
 
                   <% end %>
                 </ul>

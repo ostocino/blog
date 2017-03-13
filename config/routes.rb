@@ -7,7 +7,6 @@ Rails.application.routes.draw do
   get 'posts/new' => 'posts#new'
 
 
-
   root 'posts#index'
 
   resources :posts, only: [:create, :index, :show, :destroy, :edit, :update] do
