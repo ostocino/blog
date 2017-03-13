@@ -7,8 +7,6 @@ Rails.application.routes.draw do
 
   get 'posts/new' => 'posts#new'
 
-  get '/logout', => 'sessions#destroy'
-
   root 'posts#index'
 
   resources :posts, only: [:create, :index, :show, :destroy, :edit, :update] do

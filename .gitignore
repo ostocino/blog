@@ -20,3 +20,6 @@
 vendor/assets
 public/assets
 .DS_Store
+
+# flatuipro
+flatuipro/
